@@ -17,6 +17,8 @@ public class DoorTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
             playerInside = true;
+        Debug.Log("Player entered trigger");
+
     }
 
     void OnTriggerExit2D(Collider2D other)

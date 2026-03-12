@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 71c7ff2235ef1fe49bb5e006204d05c7
+guid: aae8db7a730f03c4f98bb45159bea035
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6994546809076412180
-    second: metal_door_small_closed_full_0
+      213: 2608847444978305783
+    second: DarknessOverlay_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 24
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,14 +100,14 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: metal_door_small_closed_full_0
+      name: DarknessOverlay_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 24
-        height: 48
-      alignment: 6
+        width: 1920
+        height: 1080
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 41f67df934f911160800000000000000
-      internalID: 6994546809076412180
+      spriteID: 7fa0e1fcdec743420800000000000000
+      internalID: 2608847444978305783
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a948dd5447580b64d9042a120a871f28
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      metal_door_small_closed_full_0: 6994546809076412180
+      DarknessOverlay_0: 2608847444978305783
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

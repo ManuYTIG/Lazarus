@@ -4,33 +4,59 @@ using UnityEngine.Tilemaps;
 public class WallTransparencyScript : MonoBehaviour
 {
     public Transform player;
-    public TilemapRenderer tilemapRenderer;
     public float fadedAlpha = 0.3f;
     public float normalAlpha = 1f;
     public float fadeSpeed = 5f;
 
     Tilemap tilemap;
+    TilemapRenderer tilemapRenderer;
+    SpriteRenderer spriteRenderer;
+
     float targetAlpha;
 
     void Start()
     {
-        tilemap = tilemapRenderer.GetComponent<Tilemap>();
+        // Try to get both components (only one will exist)
+        tilemapRenderer = GetComponent<TilemapRenderer>();
+        tilemap = GetComponent<Tilemap>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
-        // Convert player world position to the tilemap cell
-        Vector3Int cell = tilemap.WorldToCell(player.position);
+        bool inside = false;
 
-        // Check if the player is inside a tile
-        bool insideTile = tilemap.HasTile(cell);
+        // --- TILEMAP MODE ---
+        if (tilemap != null)
+        {
+            Vector3Int cell = tilemap.WorldToCell(player.position);
+            inside = tilemap.HasTile(cell);
+        }
+
+        // --- SPRITE MODE ---
+        if (spriteRenderer != null)
+        {
+            // Check if player is overlapping the sprite's bounds
+            inside = spriteRenderer.bounds.Contains(player.position);
+        }
 
         // Set fade target
-        targetAlpha = insideTile ? fadedAlpha : normalAlpha;
+        targetAlpha = inside ? fadedAlpha : normalAlpha;
 
-        // Smooth fade
-        Color c = tilemapRenderer.material.color;
-        c.a = Mathf.Lerp(c.a, targetAlpha, Time.deltaTime * fadeSpeed);
-        tilemapRenderer.material.color = c;
+        // Apply fade to TilemapRenderer
+        if (tilemapRenderer != null)
+        {
+            Color c = tilemapRenderer.material.color;
+            c.a = Mathf.Lerp(c.a, targetAlpha, Time.deltaTime * fadeSpeed);
+            tilemapRenderer.material.color = c;
+        }
+
+        // Apply fade to SpriteRenderer
+        if (spriteRenderer != null)
+        {
+            Color c = spriteRenderer.color;
+            c.a = Mathf.Lerp(c.a, targetAlpha, Time.deltaTime * fadeSpeed);
+            spriteRenderer.color = c;
+        }
     }
 }

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 71c7ff2235ef1fe49bb5e006204d05c7
+guid: e33e3191a404ab44bb29801241eda004
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6994546809076412180
-    second: metal_door_small_closed_full_0
+      213: 1814485200598397643
+    second: yellow_left_right_up_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: metal_door_small_closed_full_0
+      name: yellow_left_right_up_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 24
-        height: 48
-      alignment: 6
-      pivot: {x: 0, y: 0}
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 41f67df934f911160800000000000000
-      internalID: 6994546809076412180
+      spriteID: bc2fed72da85e2910800000000000000
+      internalID: 1814485200598397643
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a948dd5447580b64d9042a120a871f28
+    spriteID: d4b50b0aabe7e114a8f979004e364c25
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      metal_door_small_closed_full_0: 6994546809076412180
+      yellow_left_right_up_0: 1814485200598397643
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
