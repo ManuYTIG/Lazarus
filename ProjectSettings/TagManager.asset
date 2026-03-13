@@ -2,8 +2,11 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
-  tags: []
+  serializedVersion: 3
+  tags:
+  - Concrete
+  - Floor
+  - Object (Solid)
   layers:
   - Default
   - TransparentFX
@@ -38,6 +41,32 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1663751953
+    locked: 0
+  - name: Floor 1
+    uniqueID: 2707187687
+    locked: 0
+  - name: Floor 2
+    uniqueID: 2457074015
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Inside Walls
+    uniqueID: 1562774131
+    locked: 0
+  - name: Walls
+    uniqueID: 4200189429
+    locked: 0
+  - name: Roof
+    uniqueID: 1648363705
+    locked: 0
+  - name: Darkness
+    uniqueID: 2133632785
+    locked: 0
+  - name: Light
+    uniqueID: 285890919
+    locked: 0
+  m_RenderingLayers:
+  - Default
