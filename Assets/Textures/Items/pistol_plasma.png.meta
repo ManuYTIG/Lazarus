@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 01a56465919a67545a7a6c43250960c6
+guid: 6f1f17d10062c2643bf1680442171108
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7513828375999459448
-    second: character_front_0
+      213: 2135033298131960953
+    second: pistol_plasma_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: character_front_0
+      name: pistol_plasma_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 9
-        width: 162
-        height: 231
+        x: 0
+        y: 39
+        width: 261
+        height: 202
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 870b2b6191b764860800000000000000
-      internalID: 7513828375999459448
+      spriteID: 97449c6097921ad10800000000000000
+      internalID: 2135033298131960953
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      character_front_0: 7513828375999459448
+      pistol_plasma_0: 2135033298131960953
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

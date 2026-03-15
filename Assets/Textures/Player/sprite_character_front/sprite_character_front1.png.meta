@@ -103,13 +103,13 @@ TextureImporter:
       name: sprite_character_front1_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 9
-        width: 162
-        height: 231
+        x: 28
+        y: 0
+        width: 183
+        height: 240
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 1, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2bb8b5a723c5576489a707232cd0c2ea
     internalID: 0
     vertices: []
     indices: 
