@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d0544e682e27043c6a431d7bb9ca1686
+guid: 2d332e8f12afcd742869aba6b6ee9f12
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3658216374412595007
-    second: character_front_up_walk_0
+      213: 8494089060876505337
+    second: nature_light_post_0_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -96,40 +96,31 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: character_front_up_walk_0
+      name: nature_light_post_0_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 18
-        height: 24
+        width: 24
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
-      tessellationDetail: -1
+      physicsShape:
+      - - {x: 6, y: -23}
+        - {x: -6, y: -23}
+        - {x: -7, y: -24}
+        - {x: 7, y: -24}
+      tessellationDetail: 0
       bones: []
-      spriteID: 1c0be9be6976b3dc0800000000000000
-      internalID: -3658216374412595007
+      spriteID: 9f0531c4ff011e570800000000000000
+      internalID: 8494089060876505337
       vertices: []
       indices: 
       edges: []
@@ -138,7 +129,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: ae49fc03cea581e49881f2f4be672ed7
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +139,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      character_front_up_walk_0: -3658216374412595007
+      nature_light_post_0_0: 8494089060876505337
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
