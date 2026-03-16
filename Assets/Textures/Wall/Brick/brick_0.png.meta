@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d0544e682e27043c6a431d7bb9ca1686
+guid: 039dcbd8cddba424aac5c1945956a59b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3658216374412595007
-    second: character_front_up_walk_0
+      213: -7576098693142877110
+    second: brick_0_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -96,40 +96,35 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: character_front_up_walk_0
+      name: brick_0_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 18
+        width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
+      outline:
+      - - {x: 12, y: 12}
+        - {x: -12, y: 12}
+        - {x: -12, y: -12}
+        - {x: 12, y: -12}
+      physicsShape:
+      - - {x: 12, y: -11}
+        - {x: -12, y: -11}
+        - {x: -12, y: -12}
+        - {x: 12, y: -12}
+      tessellationDetail: 0
       bones: []
-      spriteID: 1c0be9be6976b3dc0800000000000000
-      internalID: -3658216374412595007
+      spriteID: a4ceae3e06a4cd690800000000000000
+      internalID: -7576098693142877110
       vertices: []
       indices: 
       edges: []
@@ -138,7 +133,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 2aa02156a113678419cd79b3fa55997b
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +143,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      character_front_up_walk_0: -3658216374412595007
+      brick_0_0: -7576098693142877110
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
