@@ -1,8 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class DigitalDisplay : MonoBehaviour
 {
+    public OpenDoor door;
+
     [SerializeField]
     private Sprite[] digits;
     
@@ -74,7 +77,7 @@ public class DigitalDisplay : MonoBehaviour
         
         switch (digitEntered)
         {
-            case "Star":
+            case "Aster":
                 ResetDisplay();
                 break;
             case "Hash":
@@ -123,6 +126,7 @@ public class DigitalDisplay : MonoBehaviour
         if (codeSequence == "5051")
         {
             Debug.Log("Correct!");
+	    door.Open();
         }
         else
         {
