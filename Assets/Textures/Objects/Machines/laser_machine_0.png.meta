@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 586b3eb7d4a835341b783a8beff57cdf
+guid: ba40bec1721e7dd42a5e2375789f4999
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9217238231634161979
-    second: generator_big_0
+      213: -2931122021713178158
+    second: laser_machine_0_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: generator_big_0
+      name: laser_machine_0_0
       rect:
         serializedVersion: 2
         x: 0
@@ -113,14 +113,14 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape:
-      - - {x: 20, y: -3}
-        - {x: -21, y: -3}
-        - {x: -23, y: -24}
-        - {x: 23, y: -24}
+      - - {x: -21, y: -24}
+        - {x: 1, y: -24}
+        - {x: 1, y: -23}
+        - {x: -21, y: -23}
       tessellationDetail: 0
       bones: []
-      spriteID: 5cecb41d9aac51080800000000000000
-      internalID: -9217238231634161979
+      spriteID: 2d1167e0d009257d0800000000000000
+      internalID: -2931122021713178158
       vertices: []
       indices: 
       edges: []
@@ -129,7 +129,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 91e00322245d1194ea3a165bee352205
+    spriteID: e3a23604dba6df14da50a004984118c6
     internalID: 0
     vertices: []
     indices: 
@@ -139,7 +139,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      generator_big_0: -9217238231634161979
+      laser_machine_0_0: -2931122021713178158
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
