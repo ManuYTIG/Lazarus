@@ -15,19 +15,17 @@ public class InventorySystem : MonoBehaviour
         return true;
     }
 
-    private void Start()
-    {
+    //private void Start()
+    //{
         // Example of adding an item to the inventory at the start
-        if (items.Length > 0)
-        {
-            AddItem(items[0]);
-        }
-    }
+    //    if (items.Length > 0)
+    //    {
+    //        AddItem(items[0]);
+    //    }
+    //}
 
     private void Update()
     {
-
-
         if (Input.GetKeyDown(KeyCode.R) && inventory.Count > 0)
         {
             RemoveItem(inventory[0]);
@@ -45,6 +43,7 @@ public class InventorySystem : MonoBehaviour
                 Debug.Log("Inventory is empty.");
             }
         }
+      
     }
 
     public bool RemoveItem(ItemData item)
