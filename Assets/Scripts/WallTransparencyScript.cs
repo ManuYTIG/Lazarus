@@ -3,7 +3,7 @@ using UnityEngine.Tilemaps;
 
 public class WallTransparencyScript : MonoBehaviour
 {
-    public Transform player;
+    private Transform player;
     public float fadedAlpha = 0.3f;
     public float normalAlpha = 1f;
     public float fadeSpeed = 5f;
@@ -15,7 +15,8 @@ public class WallTransparencyScript : MonoBehaviour
     float targetAlpha;
 
     void Start()
-    {
+    {   
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         // Try to get both components (only one will exist)
         tilemapRenderer = GetComponent<TilemapRenderer>();
         tilemap = GetComponent<Tilemap>();
