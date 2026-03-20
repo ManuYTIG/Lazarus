@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    private float health;
+    public float health;
     public float maxHealth;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

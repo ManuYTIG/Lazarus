@@ -2,26 +2,54 @@ using UnityEngine;
 
 public class DamageScript : MonoBehaviour
 {
-    [SerializeField] private string tagImmune = "Player"; // Default to Player
-    [SerializeField] private float damageValue;
-    [SerializeField] private bool isProjectile;
+    [SerializeField] private string tagImmune = "Player";
+    [SerializeField] private float damageValue = 10f;
+    [SerializeField] private float damageInterval = 1.0f; // Damage every 1 second
+    public bool isProjectile;
+    private Health targetHealth;
+    private float nextDamageTime;
+    public GameObject particleSpawn;
+    public float particleTime;
 
     private void OnCollisionEnter2D(Collision2D collision) 
     {
-        // 1. Check for immunity first
+        // Check immunity and get the Health component once
         if (collision.gameObject.CompareTag(tagImmune)) return;
 
-        // 2. Try to get the health component efficiently
-        if (collision.gameObject.TryGetComponent(out Health targetHealth)) 
+        if (collision.gameObject.TryGetComponent(out Health temp)) 
         {
-            targetHealth.RemoveHealth(damageValue);
+            targetHealth = temp;
+            Debug.Log("collided" + targetHealth.gameObject);
+            // Deal damage immediately on impact
+            ApplyDamage();
         }
+        if(isProjectile)
+        {
+            Destroy(gameObject);
+        }
+    }
 
-        // 3. Handle projectile destruction
-        if (isProjectile) 
+    private void Update() 
+    {
+        // If we are touching something with health and enough time has passed
+        if (targetHealth != null && Time.time >= nextDamageTime) 
         {
-            // This destroys the whole object (the bullet), not just the script
-            Destroy(gameObject); 
+            ApplyDamage();
         }
+    }
+
+    private void ApplyDamage()
+    {
+        targetHealth.RemoveHealth(damageValue);
+        nextDamageTime = Time.time + damageInterval; // Reset the "cooldown"
+        Debug.Log("damaged " + targetHealth.gameObject + ", Health: " + targetHealth.health);
+        GameObject p = Instantiate(particleSpawn, transform.position, Quaternion.identity);
+        Destroy(p, particleTime);
+    }
+
+    private void OnCollisionExit2D(Collision2D collision) 
+    {
+        // When we stop touching it, stop the damage
+        targetHealth = null;
     }
 }
