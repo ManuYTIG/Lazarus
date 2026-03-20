@@ -45,17 +45,14 @@ public class PlayerController : MonoBehaviour
                 {
                     // Add logic to fire the plasma pistol, such as instantiating a projectile
                     Vector3 clickScreen = Input.mousePosition;
-                    Debug.Log($"vector:  {clickScreen}");
                     Vector3 worldPos = Camera.main.ScreenToWorldPoint(clickScreen);
                     worldPos.z = 0f;
  
                     Vector3 clickDir = (worldPos - transform.position).normalized;
-                    Debug.Log($"vector:  {clickDir}");
                     Vector3 bulletSpawnPos = transform.position + clickDir * 0.5f;
                     float angle = -Vector2.SignedAngle(clickDir, new Vector2(1, 0));
                     GameObject b = Instantiate(bullet, bulletSpawnPos, Quaternion.Euler(0, 0, angle));
                     Physics2D.IgnoreCollision(b.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-                    Debug.Log($"vector:  {(Input.mousePosition).normalized * 10f}");
                     b.GetComponent<Rigidbody2D>().linearVelocity = clickDir* 10f; // Example velocity for the bullet
                     Debug.Log($"Fired plasma bullet with {b.GetComponent<Rigidbody2D>().linearVelocity} velocity");
                 }
