@@ -28,12 +28,9 @@ public class PlayerController : MonoBehaviour
         {
             box.BreakBox();
         }
-    }
 
-    void FixedUpdate()
-    {
         rb.linearVelocity = movement * moveSpeed;
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetMouseButtonDown(0))
         {
             ItemData item = inventorySystem.Getitem();
 
@@ -62,6 +59,11 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("No item in inventory to use.");
             }
         }
+    }
+
+    void FixedUpdate()
+    {
+        
     }
 
     void Flip()
