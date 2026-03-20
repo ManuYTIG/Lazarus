@@ -8,6 +8,7 @@ TagManager:
   - Floor
   - Object (Solid)
   - Enemy 1
+  - Projectile
   layers:
   - Default
   - TransparentFX
