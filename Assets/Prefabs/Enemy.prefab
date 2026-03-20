@@ -175,6 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health
   health: 0
   maxHealth: 3
+  spriteRenderer: {fileID: 8939989793359312066}
 --- !u!114 &7044412428354521606
 MonoBehaviour:
   m_ObjectHideFlags: 0

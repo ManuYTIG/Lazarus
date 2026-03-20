@@ -5,6 +5,7 @@ public class Health : MonoBehaviour
 {
     public float health;
     public float maxHealth;
+    public SpriteRenderer spriteRenderer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,12 +31,11 @@ public class Health : MonoBehaviour
 
     private IEnumerator DamageFlash()
     {
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        Color original = sr.color;
+        Color original = spriteRenderer.color;
 
-        sr.color = new Color(1f, 0f, 0f, 0.5f); // flash red
+        spriteRenderer.color = new Color(1f, 0f, 0f, 0.5f); // flash red
         yield return new WaitForSeconds(0.1f);  // wait 0.1 seconds
-        sr.color = original;                    // restore
+        spriteRenderer.color = original;                    // restore
     }
 
 }
