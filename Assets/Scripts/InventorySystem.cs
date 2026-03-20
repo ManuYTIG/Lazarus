@@ -6,12 +6,14 @@ public class InventorySystem : MonoBehaviour
 {
     public ItemData[] items;
     private List<ItemData> inventory = new List<ItemData>();
+    public SpriteRenderer itemHolder;
 
     public bool AddItem(ItemData item)
     {
         if (inventory.Count >= 1) return false; // Inventory is full, cannot add more items
         Debug.Log($"Adding item: {item.Name} to inventory.");
         inventory.Add(item);
+        itemHolder.sprite = item.Icon;
         return true;
     }
 
