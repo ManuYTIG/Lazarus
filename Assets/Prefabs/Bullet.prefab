@@ -180,4 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageScript
   tagImmune: Player
   damageValue: 1
+  damageInterval: 1
   isProjectile: 1
+  particleSpawn: {fileID: 65233157697664192, guid: 8054323c804d841718ee74e6a86ba748, type: 3}
+  particleTime: 0.5

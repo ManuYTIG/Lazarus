@@ -25,6 +25,7 @@ public class DamageScript : MonoBehaviour
         }
         if(isProjectile)
         {
+            SpawnParticle();
             Destroy(gameObject);
         }
     }
@@ -43,13 +44,15 @@ public class DamageScript : MonoBehaviour
         targetHealth.RemoveHealth(damageValue);
         nextDamageTime = Time.time + damageInterval; // Reset the "cooldown"
         Debug.Log("damaged " + targetHealth.gameObject + ", Health: " + targetHealth.health);
-        GameObject p = Instantiate(particleSpawn, transform.position, Quaternion.identity);
-        Destroy(p, particleTime);
     }
 
     private void OnCollisionExit2D(Collision2D collision) 
     {
         // When we stop touching it, stop the damage
         targetHealth = null;
+    }
+    private void SpawnParticle(){
+        GameObject p = Instantiate(particleSpawn, transform.position, Quaternion.identity);
+        Destroy(p, particleTime);
     }
 }
