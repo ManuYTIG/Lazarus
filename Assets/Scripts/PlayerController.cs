@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
                     float angle = -Vector2.SignedAngle(clickDir, new Vector2(1, 0));
                     GameObject b = Instantiate(bullet, bulletSpawnPos, Quaternion.Euler(0, 0, angle));
                     Physics2D.IgnoreCollision(b.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-                    b.GetComponent<Rigidbody2D>().linearVelocity = clickDir* 10f; // Example velocity for the bullet
+                    b.GetComponent<Rigidbody2D>().linearVelocity = clickDir* 20f; // Example velocity for the bullet
                     Debug.Log($"Fired plasma bullet with {b.GetComponent<Rigidbody2D>().linearVelocity} velocity");
                 }
             }
