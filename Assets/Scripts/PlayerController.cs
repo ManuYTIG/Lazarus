@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     private bool isFacingRight = true;
     public InventorySystem inventorySystem; // Reference to the player's inventory system
+    public Health health;
 
     void Start()
     {
