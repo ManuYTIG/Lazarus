@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7216273946231879174}
   - component: {fileID: 1481722654852304058}
   - component: {fileID: 2452730153625773535}
+  - component: {fileID: 6571614220278056381}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Projectile
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.93, y: -2.58, z: 0}
-  m_LocalScale: {x: 0.2375, y: 0.10910272, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5569436639945198225}
@@ -185,6 +186,28 @@ MonoBehaviour:
   isProjectile: 1
   particleSpawn: {fileID: 65233157697664192, guid: 8054323c804d841718ee74e6a86ba748, type: 3}
   particleTime: 0.5
+--- !u!95 &6571614220278056381
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8590382996143620837}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e1543d1a141efea49b5c9f3fe91fa8c4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8694986966252724049
 GameObject:
   m_ObjectHideFlags: 0
