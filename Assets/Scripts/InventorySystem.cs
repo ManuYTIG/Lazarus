@@ -50,6 +50,12 @@ public class InventorySystem : MonoBehaviour
 
     public bool RemoveItem(ItemData item)
     {
+        itemHolder.sprite = null; // Clear the item holder sprite when an item is removed
+        GameObject p = Instantiate(item.Prefab, transform.position, Quaternion.identity);
+        if (p.TryGetComponent(out Rigidbody2D rb))
+        {
+            rb.AddForce(Vector2.up * 5f, ForceMode2D.Impulse); // Add an upward force to the dropped item
+        }
         return inventory.Remove(item);
     }
 

@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4726831608935285560}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.016, y: -0.026, z: 0}
   m_LocalScale: {x: 0.2880402, y: 0.2880402, z: 0.2880402}
   m_ConstrainProportionsScale: 0
@@ -104,6 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8e8425aaed5e664d86371f6d8392c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
+  keyPrefab: {fileID: 8847680725329592777, guid: 35c4bf8577b7c6144af9e4816dd83abf, type: 3}
+  buttonTexture: {fileID: 2800000, guid: 05986375c19410e43ad941ad55611375, type: 3}
   itemData: {fileID: 11400000, guid: 2e79bc247ac01314db75ed35f03a407c, type: 2}
 --- !u!58 &7743540900615701629
 CircleCollider2D:

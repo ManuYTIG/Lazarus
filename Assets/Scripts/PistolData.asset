@@ -16,3 +16,4 @@ MonoBehaviour:
   Name: Plasma Pistol
   Description: Shoots targets with plasma (Press E)
   Icon: {fileID: 2135033298131960953, guid: 6f1f17d10062c2643bf1680442171108, type: 3}
+  Prefab: {fileID: 4726831608935285560, guid: 6bcae377be09fd243af3702c4300bd73, type: 3}
