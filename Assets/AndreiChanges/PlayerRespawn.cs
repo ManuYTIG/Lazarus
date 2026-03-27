@@ -35,6 +35,7 @@ public class PlayerRespawn : MonoBehaviour
             sr.enabled = false;
         if (animator != null)
             animator.enabled = false;
+        Invoke("Respawn", 1.5f);
     }
 
     public void Respawn()
