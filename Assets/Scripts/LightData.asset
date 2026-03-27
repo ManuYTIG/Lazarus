@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e077458d81cd0419ad6668f73bac19, type: 3}
+  m_Name: LightData
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  ID: stick
+  Name: Stick
+  Description: Hit people with it, or something
+  Icon: {fileID: 6765945316405845992, guid: 85911bf76c8d0e54bafaaf76226646e3, type: 3}
+  Prefab: {fileID: 3522969117425811135, guid: 8b467ebe1fa4f4091b91bed6046d8238, type: 3}

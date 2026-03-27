@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     private bool isFacingRight = true;
     public InventorySystem inventorySystem; // Reference to the player's inventory system
     public Health health;
+    private bool itemActive = false;
+    private GameObject addPref;
 
     void Start()
     {
@@ -53,6 +55,11 @@ public class PlayerController : MonoBehaviour
                     Physics2D.IgnoreCollision(b.GetComponent<Collider2D>(), GetComponent<Collider2D>());
                     b.GetComponent<Rigidbody2D>().linearVelocity = clickDir* 20f; // Example velocity for the bullet
                     Debug.Log($"Fired plasma bullet with {b.GetComponent<Rigidbody2D>().linearVelocity} velocity");
+                }
+                if (item.ID == "light_item") {
+                    if(itemActive = false) {
+                        
+                    }
                 }
             }
             else

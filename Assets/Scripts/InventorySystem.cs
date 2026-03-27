@@ -7,6 +7,8 @@ public class InventorySystem : MonoBehaviour
     public ItemData[] items;
     private List<ItemData> inventory = new List<ItemData>();
     public SpriteRenderer itemHolder;
+    private GameObject addPref;
+    private bool itemActive;
 
     public bool AddItem(ItemData item)
     {
@@ -14,7 +16,15 @@ public class InventorySystem : MonoBehaviour
         Debug.Log($"Adding item: {item.Name} to inventory.");
         inventory.Add(item);
         itemHolder.sprite = item.Icon;
+        addPref = item.AdditionalPrefab;
+        itemActive = false;
         return true;
+    }
+    public GameObject GetAddPref() {
+        return addPref;
+    }
+    public bool IsItemActive() {
+        return itemActive;
     }
 
     //private void Start()
