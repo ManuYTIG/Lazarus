@@ -17,3 +17,4 @@ MonoBehaviour:
   Description: Shoots targets with plasma (Press E)
   Icon: {fileID: 2135033298131960953, guid: 6f1f17d10062c2643bf1680442171108, type: 3}
   Prefab: {fileID: 4726831608935285560, guid: 6bcae377be09fd243af3702c4300bd73, type: 3}
+  AdditionalPrefab: {fileID: 8590382996143620837, guid: efedfb0d96248ac44810a02ff0348377, type: 3}

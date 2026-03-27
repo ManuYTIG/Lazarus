@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50e077458d81cd0419ad6668f73bac19, type: 3}
   m_Name: LightData
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  ID: stick
-  Name: Stick
-  Description: Hit people with it, or something
+  ID: light_item
+  Name: Flasher
+  Description: Light
   Icon: {fileID: 6765945316405845992, guid: 85911bf76c8d0e54bafaaf76226646e3, type: 3}
   Prefab: {fileID: 3522969117425811135, guid: 8b467ebe1fa4f4091b91bed6046d8238, type: 3}
+  AdditionalPrefab: {fileID: 1548003384811608848, guid: 65f15e1b51bbb44ecb9fab93c1ccba76, type: 3}
