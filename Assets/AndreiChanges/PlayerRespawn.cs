@@ -35,6 +35,8 @@ public class PlayerRespawn : MonoBehaviour
             sr.enabled = false;
         if (animator != null)
             animator.enabled = false;
+
+        GetComponent<TimerSystem>().enabled = false; // <-- stop timer on death
         Invoke("Respawn", 1.5f);
     }
 
@@ -54,5 +56,9 @@ public class PlayerRespawn : MonoBehaviour
             animator.enabled = true;
             animator.Play("Spawn", 0, 0f);
         }
+
+        TimerSystem timerSystem = GetComponent<TimerSystem>();
+        timerSystem.enabled = true;       // <-- restart timer
+        timerSystem.ResetTimer();         // <-- reset time back to start
     }
 }
