@@ -14,6 +14,8 @@ public class DigitalDisplay : MonoBehaviour
     
     private string codeSequence;
     
+    public GameObject parentObject;
+
     void Start()
     {
         codeSequence = "";
@@ -126,7 +128,8 @@ public class DigitalDisplay : MonoBehaviour
         if (codeSequence == "5051")
         {
             Debug.Log("Correct!");
-	    door.Open();
+	        door.Open();
+            parentObject.SetActive(false);
         }
         else
         {
