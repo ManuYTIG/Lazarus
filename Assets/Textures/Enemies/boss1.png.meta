@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7c7a0fc44421d8c47bdf0ad047244736
+guid: facd0126bd6764f4a8f6c9b4d3a604a3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6546154218050834010
-    second: enemy1_normal_0
+      213: -5912800498141821623
+    second: boss1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -101,7 +101,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: enemy1_normal_0
+      name: boss1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -126,14 +126,18 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape:
-      - - {x: 11, y: 6}
-        - {x: -10, y: 6}
-        - {x: -10, y: -5}
-        - {x: 11, y: -5}
+      - - {x: -6, y: 4}
+        - {x: 5, y: 4}
+        - {x: 5, y: 12}
+        - {x: -6, y: 12}
+      - - {x: -9, y: -10}
+        - {x: 9, y: -10}
+        - {x: 9, y: 4}
+        - {x: -9, y: 4}
       tessellationDetail: 0
       bones: []
-      spriteID: 6a1b724fb636725a0800000000000000
-      internalID: -6546154218050834010
+      spriteID: 9450188364381fda0800000000000000
+      internalID: -5912800498141821623
       vertices: []
       indices: 
       edges: []
@@ -142,7 +146,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 15be82dfac17d0f48b5229e33e51ccb7
+    spriteID: 8e91ca36603e12b4797f40b6865ba710
     internalID: 0
     vertices: []
     indices: 
@@ -152,7 +156,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      enemy1_normal_0: -6546154218050834010
+      boss1_0: -5912800498141821623
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

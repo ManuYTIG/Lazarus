@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7c7a0fc44421d8c47bdf0ad047244736
+guid: 3bc46b014ba7516459c6062c5307d715
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6546154218050834010
-    second: enemy1_normal_0
+      213: -3216189146986437283
+    second: boss_egg_broken_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -101,7 +101,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: enemy1_normal_0
+      name: boss_egg_broken_0
       rect:
         serializedVersion: 2
         x: 0
@@ -125,15 +125,11 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 11, y: 6}
-        - {x: -10, y: 6}
-        - {x: -10, y: -5}
-        - {x: 11, y: -5}
-      tessellationDetail: 0
+      physicsShape: []
+      tessellationDetail: -1
       bones: []
-      spriteID: 6a1b724fb636725a0800000000000000
-      internalID: -6546154218050834010
+      spriteID: d55286bc20dcd53d0800000000000000
+      internalID: -3216189146986437283
       vertices: []
       indices: 
       edges: []
@@ -142,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 15be82dfac17d0f48b5229e33e51ccb7
+    spriteID: 54e7e90e4bfa85445a6187a102c9d0b8
     internalID: 0
     vertices: []
     indices: 
@@ -152,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      enemy1_normal_0: -6546154218050834010
+      boss_egg_broken_0: -3216189146986437283
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
