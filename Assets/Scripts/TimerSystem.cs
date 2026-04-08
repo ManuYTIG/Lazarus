@@ -3,7 +3,7 @@ using TMPro;
 public class TimerSystem : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
-    public float startTime = 10f;
+    public float startTime = 120f;
     private float currentTime;
     public PlayerRespawn playerRespawn;
 
