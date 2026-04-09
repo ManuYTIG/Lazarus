@@ -251,7 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy1
   speed: 2
   detectionRange: 5
-  player: {fileID: 0}
+  player: {fileID: 3146884088856338670, guid: 9fc07e4da89644beaa97c55b5c2b26eb, type: 3}
 --- !u!114 &7303452415718573661
 MonoBehaviour:
   m_ObjectHideFlags: 0

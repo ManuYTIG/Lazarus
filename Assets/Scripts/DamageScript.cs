@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DamageScript : MonoBehaviour
 {
-    [SerializeField] private string tagImmune;
+    [SerializeField] private string[] tagImmune;
     [SerializeField] private float damageValue;
     [SerializeField] private float damageInterval;
     [SerializeField] private bool isProjectile;
@@ -17,8 +17,11 @@ public class DamageScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Ignore immune targets
-        if (collision.gameObject.CompareTag(tagImmune))
-            return;
+        for(int i = 0; i < tagImmune.Length; i++)
+        {
+            if (collision.gameObject.CompareTag(tagImmune[i]))
+                return;
+        }
 
         // Check if the collided object has health
         if (collision.gameObject.TryGetComponent(out Health temp))

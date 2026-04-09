@@ -10,6 +10,7 @@ TagManager:
   - Enemy 1
   - Projectile
   - Minion
+  - Boss
   layers:
   - Default
   - TransparentFX

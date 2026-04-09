@@ -4,46 +4,59 @@ public class Enemy1 : MonoBehaviour
 {
     public float speed = 2f;
     public float detectionRange = 5f;
-    public Transform player;
-    private bool touchingPlayer = false;
+    public string targetTag = "Player";
+
+    private Transform target;
+    private bool touchingTarget = false;
+
+    void Start()
+    {
+        // Find the first object with the tag
+        GameObject obj = GameObject.FindGameObjectWithTag(targetTag);
+        if (obj != null)
+            target = obj.transform;
+    }
 
     void Update()
     {
-        if (player == null) return;
-
-        float distance = Vector2.Distance(transform.position, player.position);
-
-        if (distance < detectionRange && !touchingPlayer)
+        if (target == null)
         {
-            // Calculate direction
-            Vector2 direction = (player.position - transform.position).normalized;
-            
-            // Move toward the player
+            // Try to find again in case the target spawned later
+            GameObject obj = GameObject.FindGameObjectWithTag(targetTag);
+            if (obj != null)
+                target = obj.transform;
+
+            return;
+        }
+
+        float distance = Vector2.Distance(transform.position, target.position);
+
+        if (distance < detectionRange && !touchingTarget)
+        {
+            Vector2 direction = (target.position - transform.position).normalized;
             transform.position += (Vector3)direction * speed * Time.deltaTime;
 
-            // Flip logic: Check if moving right or left
             HandleSpriteFlip(direction.x);
         }
     }
 
     private void HandleSpriteFlip(float horizontalDirection)
     {
-        // If moving right (pos) and scale is left, or moving left (neg) and scale is right
         if (horizontalDirection > 0 && transform.localScale.x < 0)
-        {
             transform.localScale = new Vector3(1, 1, 1);
-        }
         else if (horizontalDirection < 0 && transform.localScale.x > 0)
-        {
             transform.localScale = new Vector3(-1, 1, 1);
-        }
     }
 
-    public void OnCollisionEnter2D(Collision2D collision) {
-        if(collision.gameObject.CompareTag("Player")) touchingPlayer = true;
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag(targetTag))
+            touchingTarget = true;
     }
 
-    public void OnCollisionExit2D(Collision2D collision) {
-        if(collision.gameObject.CompareTag("Player")) touchingPlayer = false;
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag(targetTag))
+            touchingTarget = false;
     }
 }
