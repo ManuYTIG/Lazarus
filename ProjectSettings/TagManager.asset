@@ -9,6 +9,7 @@ TagManager:
   - Object (Solid)
   - Enemy 1
   - Projectile
+  - Minion
   layers:
   - Default
   - TransparentFX
