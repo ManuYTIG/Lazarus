@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2ef40e3646d01954782809f2e0745230
+guid: 6a29c226e8f02274b9dcd6551f115978
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3962282924905369164
-    second: boss2_ground_attack_0
+      213: 7088386181519096359
+    second: boss_ground_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boss2_ground_attack_0
+      name: boss_ground_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 10
-        width: 37
-        height: 26
+        x: 1
+        y: 9
+        width: 45
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4b17b614ca42309c0800000000000000
-      internalID: -3962282924905369164
+      spriteID: 72abb3c1da10f5260800000000000000
+      internalID: 7088386181519096359
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      boss2_ground_attack_0: -3962282924905369164
+      boss_ground_0: 7088386181519096359
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
