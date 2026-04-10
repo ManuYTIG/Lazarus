@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 7986798118038306871}
   - component: {fileID: 5162731839119358299}
   - component: {fileID: 5022646350989318535}
+  - component: {fileID: 3889156722052154883}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -93,7 +94,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -1913938890188070149, guid: 53c0510d652c1314f98f6b979925d7d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -156,8 +157,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
+  m_Mass: 20
+  m_LinearDamping: 5
   m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -205,8 +206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a5939d2b5074d6c93502e42eb759e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  health: 100
-  maxHealth: 100
+  health: 150
+  maxHealth: 150
   spriteRenderer: {fileID: 4875046132673615611}
   healthBarPrefab: {fileID: 2449947681089070658, guid: 51cc79e695630ea48876d68b89e8a3d9, type: 3}
 --- !u!114 &1532198663711810385
@@ -221,10 +222,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdbcc046c5ed2d148bf83b6cb47c7c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossController
+  detectionRange: 12
   player: {fileID: 0}
   deathVFX: {fileID: 0}
   flyingAnimator: {fileID: 9100000, guid: 081f45eed96aa0e4aa68f5f0294928d4, type: 2}
   groundSprite: {fileID: 7088386181519096359, guid: 6a29c226e8f02274b9dcd6551f115978, type: 3}
+  moveSpeed: 3
+  moveDurationMin: 0.4
+  moveDurationMax: 1.2
+  moveCooldownMin: 0.6
+  moveCooldownMax: 1.4
   rb: {fileID: 0}
   anim: {fileID: 0}
   sr: {fileID: 0}
@@ -311,11 +318,11 @@ MonoBehaviour:
   acidProjectilePrefab: {fileID: 3430433325254570706, guid: 3d3d375f51c62454b88884f3f3280c62, type: 3}
   projectileSpeed: 8
   projectileGravityScale: 1.2
-  acidPoolPrefab: {fileID: 0}
+  acidPoolPrefab: {fileID: 4500486444844433045, guid: 25876441ee251f242afad572f9f0e0c7, type: 3}
   poolDuration: 4
   poolDamagePerSec: 5
   bossAnimator: {fileID: 7626937047088376932}
-  spawnPoint: {fileID: 0}
+  spawnPoint: {fileID: 1557818949692590560}
 --- !u!114 &7943673817983719239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,6 +339,8 @@ MonoBehaviour:
   damage: 20
   chargeSpeed: 12
   chargeDuration: 0.5
+  knockbackForce: 18
+  knockbackDuration: 0.25
   emberPrefab: {fileID: 0}
   emberSpread: 0.4
   bossRb: {fileID: 8512000611229785042}
@@ -353,7 +362,7 @@ MonoBehaviour:
   - {fileID: 6718859521627394775, guid: c7a421caa9c4c574ca561a04d3430ff0, type: 3}
   - {fileID: 6718859521627394775, guid: c7a421caa9c4c574ca561a04d3430ff0, type: 3}
   - {fileID: 6718859521627394775, guid: c7a421caa9c4c574ca561a04d3430ff0, type: 3}
-  spawnCount: 4
+  spawnCount: 3
   spawnRadius: 3
   spawnDelay: 0.2
   bossAnimator: {fileID: 7626937047088376932}
@@ -371,7 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackLarvaBomb
   cooldown: 3
-  larvaPrefab: {fileID: 0}
+  larvaPrefab: {fileID: 7128545385088774309, guid: 94a949463d20e774bb533f17d84002cc, type: 3}
   larvaCount: 5
   launchSpeed: 6
   hatchDelay: 3
@@ -437,6 +446,28 @@ MonoBehaviour:
   spawnInterval: 1.2
   totalDuration: 20
   spawnRadius: 4
-  maxMinions: 12
+  maxMinions: 6
   bossAnimator: {fileID: 7626937047088376932}
   invasionSound: {fileID: 0}
+--- !u!114 &3889156722052154883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36166254594095279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e9607f3cd8f4ff4a5d8bef01f5e4d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageScript
+  tagImmune:
+  - Larva Egg
+  - Enemy 1
+  - Minion
+  - Boss
+  damageValue: 7
+  damageInterval: 2
+  isProjectile: 0
+  particleSpawn: {fileID: 0}
+  particleTime: 0
