@@ -22,7 +22,11 @@ public class Health : MonoBehaviour
         UpdateHealthBar();
         playerRespawn = GetComponent<PlayerRespawn>(); // <-- added
     }
-
+    public void ResetHealth()
+    {
+        health = maxHealth;
+        UpdateHealthBar();
+    }
     void Update()
     {
         

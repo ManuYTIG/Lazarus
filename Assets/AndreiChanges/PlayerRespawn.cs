@@ -11,6 +11,7 @@ public class PlayerRespawn : MonoBehaviour
     private Animator animator;
     private SpriteRenderer[] spriteRenderers;
     private TimerSystem timerSystem;
+    private Health health;
 
     private void Awake()
     {
@@ -20,6 +21,7 @@ public class PlayerRespawn : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         timerSystem = FindObjectOfType<TimerSystem>();
+        health = GetComponent<Health>();
     }
 
     public void Die()
@@ -59,6 +61,7 @@ public class PlayerRespawn : MonoBehaviour
             timerSystem.enabled = true;
             timerSystem.ResetTimer();
         }
+        if (health != null) health.ResetHealth();
 
         foreach (SpriteRenderer sr in spriteRenderers)
             sr.enabled = true;

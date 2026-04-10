@@ -20,6 +20,7 @@ public class AttackCharge : BaseAttack
 
     protected override IEnumerator DoAttack(BossController boss)
     {
+        Debug.Log("BossAnt: AttackCharge");
         bossAnimator?.SetTrigger("Charge");
         yield return new WaitForSeconds(0.4f);
 

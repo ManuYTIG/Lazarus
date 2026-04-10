@@ -17,6 +17,7 @@ public class AttackLarvaBomb : BaseAttack
 
     protected override IEnumerator DoAttack(BossController boss)
     {
+        Debug.Log("AttackLarvaBomb started");
         bossAnimator?.SetTrigger("LarvaBomb");
         yield return new WaitForSeconds(0.35f);
 

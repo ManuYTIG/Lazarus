@@ -21,6 +21,7 @@ public class AttackFireCross : BaseAttack
 
     protected override IEnumerator DoAttack(BossController boss)
     {
+        Debug.Log("BossAnt: AttackFireCross");
         bossAnimator?.SetTrigger("FireCross");
         audioSource?.PlayOneShot(fireSound);
         yield return new WaitForSeconds(0.4f);

@@ -21,6 +21,7 @@ public class AttackInvasion : BaseAttack
 
     protected override IEnumerator DoAttack(BossController boss)
     {
+        Debug.Log("BossAnt: AttackInvasion");
         bossAnimator?.SetTrigger("Roar");
         audioSource?.PlayOneShot(invasionSound);
         yield return new WaitForSeconds(0.5f);

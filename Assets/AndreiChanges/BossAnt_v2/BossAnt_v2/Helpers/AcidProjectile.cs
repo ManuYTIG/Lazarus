@@ -12,7 +12,7 @@ public class AcidProjectile : MonoBehaviour
         {
             GameObject pool = Instantiate(poolPrefab, transform.position, Quaternion.identity);
             AcidPool   ap   = pool.GetComponent<AcidPool>();
-            if (ap != null) { ap.duration = poolDuration; ap.damagePerSec = poolDamagePerSec; }
+            if (ap != null) { ap.duration = poolDuration;}
         }
         Destroy(gameObject);
     }

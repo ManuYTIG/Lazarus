@@ -11,6 +11,9 @@ using UnityEngine;
 [RequireComponent(typeof(Health))]
 public class BossController : MonoBehaviour
 {
+    [Header("Comportement")]
+    public float detectionRange = 12f;
+
     [Header("Références")]
     public Transform  player;
     public GameObject deathVFX;
@@ -29,6 +32,12 @@ public class BossController : MonoBehaviour
 
     public bool IsDead      { get; private set; }
     public bool IsAttacking { get; set; }
+
+    public bool PlayerInRange()
+    {
+        if (player == null) return false;
+        return Vector2.Distance(transform.position, player.position) <= detectionRange;
+    }
 
     private void Awake()
     {
@@ -66,8 +75,12 @@ public class BossController : MonoBehaviour
         {
             if (!IsAttacking)
             {
-                FacePlayer();
-                yield return attackSelector.SelectAndExecute(this);
+                // NEW: only act if player is in range
+                if (PlayerInRange())
+                {
+                    FacePlayer();
+                    yield return attackSelector.SelectAndExecute(this);
+                }
             }
             yield return null;
         }

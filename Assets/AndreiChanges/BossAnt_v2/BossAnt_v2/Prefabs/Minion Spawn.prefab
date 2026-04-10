@@ -284,6 +284,7 @@ MonoBehaviour:
   - Minion
   - Enemy 1
   - Boss
+  - Larva Egg
   damageValue: 0.97
   damageInterval: 1
   isProjectile: 0

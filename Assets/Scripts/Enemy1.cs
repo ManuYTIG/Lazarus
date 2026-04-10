@@ -8,13 +8,15 @@ public class Enemy1 : MonoBehaviour
 
     private Transform target;
     private bool touchingTarget = false;
+    private float baseScaleX;
 
     void Start()
     {
-        // Find the first object with the tag
         GameObject obj = GameObject.FindGameObjectWithTag(targetTag);
         if (obj != null)
             target = obj.transform;
+
+        baseScaleX = transform.localScale.x; // store original scale
     }
 
     void Update()
@@ -42,10 +44,11 @@ public class Enemy1 : MonoBehaviour
 
     private void HandleSpriteFlip(float horizontalDirection)
     {
-        if (horizontalDirection > 0 && transform.localScale.x < 0)
-            transform.localScale = new Vector3(1, 1, 1);
-        else if (horizontalDirection < 0 && transform.localScale.x > 0)
-            transform.localScale = new Vector3(-1, 1, 1);
+        if (Mathf.Abs(horizontalDirection) < 0.01f)
+            return; // avoid jitter when moving mostly vertically
+
+        float newScaleX = baseScaleX * (horizontalDirection > 0 ? 1 : -1);
+        transform.localScale = new Vector3(newScaleX, transform.localScale.y, transform.localScale.z);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

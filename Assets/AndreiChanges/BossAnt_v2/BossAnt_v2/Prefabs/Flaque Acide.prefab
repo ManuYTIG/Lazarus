@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1172309925030885409}
   - component: {fileID: 4137624106263112370}
   - component: {fileID: 7789267841208456199}
+  - component: {fileID: 3742805944256358830}
   m_Layer: 0
   m_Name: Flaque Acide
   m_TagString: Untagged
@@ -141,4 +142,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AcidPool
   duration: 0
-  damagePerSec: 0
+--- !u!114 &3742805944256358830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4500486444844433045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e9607f3cd8f4ff4a5d8bef01f5e4d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageScript
+  tagImmune:
+  - Enemy 1
+  - Boss
+  - Minion
+  - Larva Egg
+  damageValue: 2
+  damageInterval: 2
+  isProjectile: 0
+  particleSpawn: {fileID: 0}
+  particleTime: 0

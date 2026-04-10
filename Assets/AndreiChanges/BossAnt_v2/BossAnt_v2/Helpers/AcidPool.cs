@@ -4,7 +4,7 @@ using UnityEngine;
 public class AcidPool : MonoBehaviour
 {
     public float duration;
-    public float damagePerSec;
+    //public float damagePerSec;
 
     private void Start() => StartCoroutine(Lifetime());
 
@@ -15,9 +15,9 @@ public class AcidPool : MonoBehaviour
     }
 
     // Utilise Health.RemoveHealth comme le reste du projet
-    private void OnTriggerStay2D(Collider2D col)
-    {
-        Health h = col.GetComponent<Health>();
-        if (h != null) h.RemoveHealth(damagePerSec * Time.deltaTime);
-    }
+    //private void OnTriggerStay2D(Collider2D col)
+    //{
+    //    Health h = col.GetComponent<Health>();
+    //    if (h != null) h.RemoveHealth(damagePerSec * Time.deltaTime);
+    //}
 }

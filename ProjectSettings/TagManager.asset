@@ -11,6 +11,7 @@ TagManager:
   - Projectile
   - Minion
   - Boss
+  - Larva Egg
   layers:
   - Default
   - TransparentFX

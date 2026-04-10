@@ -46,8 +46,11 @@ public class AttackStinger : BaseAttack
         Collider2D[] hits = Physics2D.OverlapCircleAll(stingTip, 0.6f);
         foreach (var col in hits)
         {
-            Health h = col.GetComponent<Health>();
-            if (h != null) h.RemoveHealth(damage);
+            if(col.gameObject.CompareTag("Player"))
+            {
+                Health h = col.GetComponent<Health>();
+                if (h != null) h.RemoveHealth(damage);
+            }       
         }
 
         yield return new WaitForSeconds(0.5f);

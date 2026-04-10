@@ -22,6 +22,13 @@ public class DamageScript : MonoBehaviour
             if (collision.gameObject.CompareTag(tagImmune[i]))
                 return;
         }
+        if (collision.gameObject.CompareTag("Larva Egg"))
+        {
+            if(collision.gameObject.TryGetComponent(out LarvaScript egg))
+            {
+                egg.BreakEgg(false);
+            }
+        }
 
         // Check if the collided object has health
         if (collision.gameObject.TryGetComponent(out Health temp))

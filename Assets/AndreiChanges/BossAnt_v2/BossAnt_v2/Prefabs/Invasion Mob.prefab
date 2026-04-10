@@ -162,9 +162,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageScript
   tagImmune:
-  - Enemy
+  - Enemy 1
   - Minion
   - Boss
+  - Larva Egg
   damageValue: 4
   damageInterval: 1
   isProjectile: 0

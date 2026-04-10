@@ -21,6 +21,7 @@ public class AttackAcid : BaseAttack
 
     protected override IEnumerator DoAttack(BossController boss)
     {
+        Debug.Log("BossAnt: AttackAcid");
         bossAnimator?.SetTrigger("Acid");
         yield return new WaitForSeconds(0.25f);
 
