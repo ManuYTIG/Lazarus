@@ -47,9 +47,9 @@ public class AttackSelector : MonoBehaviour
         {
             case PhaseManager.Phase.One:
                 pool.Add((stingerAttack, 30));
-                pool.Add((acidAttack,    25));
-                pool.Add((chargeAttack,  25));
-                pool.Add((spawnAttack,   20));
+                pool.Add((acidAttack,    30));
+                pool.Add((chargeAttack,  30));
+                pool.Add((spawnAttack,   10));
                 break;
 
             case PhaseManager.Phase.Two:
@@ -62,7 +62,7 @@ public class AttackSelector : MonoBehaviour
                 break;
 
             case PhaseManager.Phase.Three:
-                pool.Add((stingerAttack,  10));
+                pool.Add((chargeAttack,  10));
                 pool.Add((fireCrossAttack,35));
                 pool.Add((invasionAttack, 35));
                 pool.Add((acidAttack,     20));

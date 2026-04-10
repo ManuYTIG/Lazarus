@@ -22,6 +22,13 @@ public class BossController : MonoBehaviour
     public RuntimeAnimatorController flyingAnimator; // animator avec les 8 frames de vol
     public Sprite                    groundSprite;   // sprite unique quand posée (phase 3)
 
+    [Header("Déplacement")]
+    public float moveSpeed = 3f;
+    public float moveDurationMin = 0.4f;
+    public float moveDurationMax = 1.2f;
+    public float moveCooldownMin = 0.6f;
+    public float moveCooldownMax = 1.4f;
+
     [HideInInspector] public Rigidbody2D    rb;
     [HideInInspector] public Animator       anim;
     [HideInInspector] public SpriteRenderer sr;
@@ -53,6 +60,7 @@ public class BossController : MonoBehaviour
     {
         StartCoroutine(WatchHP());
         StartCoroutine(BossLoop());
+        StartCoroutine(RandomMovement());
     }
 
     // Surveille les HP pour déclencher les transitions de phase
@@ -122,5 +130,32 @@ public class BossController : MonoBehaviour
     public Vector2 DirectionAwayFromPlayer()
     {
         return -DirectionToPlayer();
+    }
+    private IEnumerator RandomMovement()
+    {
+        while (!IsDead)
+        {
+            // Only move if player is in range AND boss is not attacking
+            if (!IsAttacking && PlayerInRange())
+            {
+                float duration = Random.Range(moveDurationMin, moveDurationMax);
+                float timer = 0f;
+
+                Vector2 dir = DirectionToPlayer();
+
+                // Move toward player for a short burst
+                while (timer < duration && !IsAttacking && PlayerInRange())
+                {
+                    rb.MovePosition(rb.position + dir * moveSpeed * Time.deltaTime);
+                    FacePlayer();
+                    timer += Time.deltaTime;
+                    yield return null;
+                }
+            }
+
+            // Wait before next movement burst
+            float cooldown = Random.Range(moveCooldownMin, moveCooldownMax);
+            yield return new WaitForSeconds(cooldown);
+        }
     }
 }
