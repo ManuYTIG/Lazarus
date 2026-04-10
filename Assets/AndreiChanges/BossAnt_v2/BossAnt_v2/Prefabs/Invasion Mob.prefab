@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5081538162181265497}
   - component: {fileID: 4001128469250213838}
   - component: {fileID: 4194276237493117451}
+  - component: {fileID: 2680025641834738305}
   m_Layer: 0
   m_Name: Invasion Mob
   m_TagString: Minion
@@ -183,8 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a5939d2b5074d6c93502e42eb759e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  health: 40
-  maxHealth: 40
+  health: 0
+  maxHealth: 20
   spriteRenderer: {fileID: 7496661497840460073}
   healthBarPrefab: {fileID: 2449947681089070658, guid: 51cc79e695630ea48876d68b89e8a3d9, type: 3}
 --- !u!114 &4194276237493117451
@@ -202,3 +203,30 @@ MonoBehaviour:
   speed: 1.5
   detectionRange: 5
   targetTag: Player
+--- !u!50 &2680025641834738305
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3737480824366036189}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 20
+  m_LinearDamping: 5
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
