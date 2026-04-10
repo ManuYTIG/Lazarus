@@ -12,12 +12,20 @@ public class PipeDisplay : MonoBehaviour
     public Pipe Pipe3R;
     public Pipe Pipe4R;
     public Pipe Pipe5R;
+    public Pipe Pipe6R;
+    public Pipe Pipe7R;
+    public Pipe Pipe8R;
+    public Pipe Pipe9R;
 
     public int Pipe1Value = 1;
     public int Pipe2Value = 1;
     public int Pipe3Value = 1;
     public int Pipe4Value = 1;
     public int Pipe5Value = 1;
+    public int Pipe6Value = 1;
+    public int Pipe7Value = 1;
+    public int Pipe8Value = 1;
+    public int Pipe9Value = 1;
 
     [SerializeField]
     private Sprite[] pipes;
@@ -27,6 +35,10 @@ public class PipeDisplay : MonoBehaviour
     public Button Pipe3;
     public Button Pipe4;
     public Button Pipe5;
+    public Button Pipe6;
+    public Button Pipe7;
+    public Button Pipe8;
+    public Button Pipe9;
     public Button Checker;
     void Start() 
     {
@@ -36,6 +48,10 @@ public class PipeDisplay : MonoBehaviour
         Pipe3.onClick.AddListener(Pipe3Click);
         Pipe4.onClick.AddListener(Pipe4Click);
         Pipe5.onClick.AddListener(Pipe5Click);
+        Pipe6.onClick.AddListener(Pipe6Click);
+        Pipe7.onClick.AddListener(Pipe7Click);
+        Pipe8.onClick.AddListener(Pipe8Click);
+        Pipe9.onClick.AddListener(Pipe9Click);
         Checker.onClick.AddListener(CheckerClick);
     }
     void Update()
@@ -49,17 +65,29 @@ public class PipeDisplay : MonoBehaviour
     }
     void CheckerClick()
     {
-        if (Pipe1Value == 1)
+        if (Pipe1Value == 4)
         {
-            if (Pipe2Value == 2)
+            if (Pipe2Value == 3)
             {
-                if (Pipe3Value == 3)
+                if (Pipe3Value == 4)
                 {
-                    if (Pipe4Value == 4)
+                    if (Pipe4Value == 1)
                     {
-                        if (Pipe5Value == 1)
+                        if (Pipe5Value == 2)
                         {
-                            Debug.Log("FinalCorrect"); //This is where script that calls for something like opening a door goes
+                            if (Pipe6Value == 4)
+                            {
+                                if (Pipe7Value == 1)
+                                {
+                                    if (Pipe8Value == 2)
+                                    {
+                                        if (Pipe9Value == 4)
+                                        {
+                                            Debug.Log("Correct"); //This is where script that calls for something like opening a door goes
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -124,6 +152,54 @@ public class PipeDisplay : MonoBehaviour
         else
         {
             Pipe5Value = 1;
+        }
+    }
+    void Pipe6Click() 
+    {
+        Pipe6R.RotateObject();
+        if (Pipe6Value < 4)
+        {
+            Pipe6Value += 1;
+        }
+        else
+        {
+            Pipe6Value = 1;
+        }
+    }
+    void Pipe7Click() 
+    {
+        Pipe7R.RotateObject();
+        if (Pipe7Value < 4)
+        {
+            Pipe7Value += 1;
+        }
+        else
+        {
+            Pipe7Value = 1;
+        }
+    }
+    void Pipe8Click() 
+    {
+        Pipe8R.RotateObject();
+        if (Pipe8Value < 4)
+        {
+            Pipe8Value += 1;
+        }
+        else
+        {
+            Pipe8Value = 1;
+        }
+    }
+    void Pipe9Click() 
+    {
+        Pipe9R.RotateObject();
+        if (Pipe9Value < 4)
+        {
+            Pipe9Value += 1;
+        }
+        else
+        {
+            Pipe9Value = 1;
         }
     }
 }
