@@ -1,40 +1,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//One item inventory system that can hold only one item at a time. It allows adding, removing, and retrieving the item in the inventory.
 public class InventorySystem : MonoBehaviour
 {
     public ItemData[] items;
     private List<ItemData> inventory = new List<ItemData>();
     public SpriteRenderer itemHolder;
-    private GameObject addPref;
+    private ItemData currentItemData;
+    private GameObject addPrefInstance;
     private bool itemActive;
 
     public bool AddItem(ItemData item)
     {
-        if (inventory.Count >= 1) return false; // Inventory is full, cannot add more items
+        if (inventory.Count >= 1) return false;
         Debug.Log($"Adding item: {item.Name} to inventory.");
         inventory.Add(item);
         itemHolder.sprite = item.Icon;
-        addPref = item.AdditionalPrefab;
+        currentItemData = item;
+
+        if (item.AdditionalPrefab != null)
+        {
+            addPrefInstance = Instantiate(item.AdditionalPrefab, transform);
+            addPrefInstance = Instantiate(item.AdditionalPrefab, transform);
+        }
+
         itemActive = false;
         return true;
     }
-    public GameObject GetAddPref() {
-        return addPref;
-    }
-    public bool IsItemActive() {
-        return itemActive;
+
+    public GameObject GetAddPref()
+    {
+        return addPrefInstance;
     }
 
-    //private void Start()
-    //{
-        // Example of adding an item to the inventory at the start
-    //    if (items.Length > 0)
-    //    {
-    //        AddItem(items[0]);
-    //    }
-    //}
+    public bool IsItemActive()
+    {
+        return itemActive;
+    }
 
     private void Update()
     {
@@ -42,32 +44,34 @@ public class InventorySystem : MonoBehaviour
         {
             RemoveItem(inventory[0]);
         }
-        //Example of retrieving the current item in the inventory when the player presses the 'I' key
+
         if (Input.GetKeyDown(KeyCode.I))
         {
             ItemData currentItem = Getitem();
             if (currentItem != null)
-            {
                 Debug.Log($"Current item in inventory: {currentItem.Name}");
-            }
             else
-            {
                 Debug.Log("Inventory is empty.");
-            }
         }
-      
     }
 
     public bool RemoveItem(ItemData item)
     {
-        itemHolder.sprite = null; // Clear the item holder sprite when an item is removed
+        itemHolder.sprite = null;
+
+        if (addPrefInstance != null)
+        {
+            Destroy(addPrefInstance);
+            addPrefInstance = null;
+        }
+
+        currentItemData = null;
         GameObject p = Instantiate(item.Prefab, transform.position, Quaternion.identity);
         if (p.TryGetComponent(out Rigidbody2D rb))
-        {
-            rb.AddForce(Vector2.up * 5f, ForceMode2D.Impulse); // Add an upward force to the dropped item
-        }
+            rb.AddForce(Vector2.up * 5f, ForceMode2D.Impulse);
+
         return inventory.Remove(item);
     }
 
-    public ItemData Getitem() => inventory.Count > 0 ? inventory[0] : null; // Return the first item in the inventory or null if empty
+    public ItemData Getitem() => inventory.Count > 0 ? inventory[0] : null;
 }

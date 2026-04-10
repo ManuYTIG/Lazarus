@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e077458d81cd0419ad6668f73bac19, type: 3}
+  m_Name: Light item data
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  ID: light_item
+  Name: light item
+  Description: arme que tu swing
+  Icon: {fileID: -855298285791758126, guid: 0f7fd1bfcc8bb5543984486f6f2b3f31, type: 3}
+  Prefab: {fileID: 5167243543411565469, guid: 5d269a90b1a2db1409131a1fb514dc41, type: 3}
+  AdditionalPrefab: {fileID: 426849716639443077, guid: be4981fefc1643c4f807fc82029a59c9, type: 3}

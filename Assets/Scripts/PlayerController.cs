@@ -55,9 +55,15 @@ public class PlayerController : MonoBehaviour
                     b.GetComponent<Rigidbody2D>().linearVelocity = clickDir* 20f; // Example velocity for the bullet
                     Debug.Log($"Fired plasma bullet with {b.GetComponent<Rigidbody2D>().linearVelocity} velocity");
                 }
-                if (item.ID == "light_item") {
-                    
-                }
+                if (item.ID == "light_item")
+{
+    Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    mouseWorld.z = 0f;
+
+    LightStickItem stick = inventorySystem.GetAddPref()?.GetComponent<LightStickItem>();
+    if (stick != null)
+        stick.TrySwing(transform.position, mouseWorld);
+}
             }
             else
             {
