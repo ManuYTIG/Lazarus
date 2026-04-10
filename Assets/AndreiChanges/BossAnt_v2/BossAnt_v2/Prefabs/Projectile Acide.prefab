@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4711111931762716562}
   m_Layer: 0
   m_Name: Projectile Acide
-  m_TagString: Untagged
+  m_TagString: Larva Egg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,9 +169,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d46320509e52741b34a83d28dba2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AcidProjectile
-  poolPrefab: {fileID: 0}
+  poolPrefab: {fileID: 4500486444844433045, guid: 25876441ee251f242afad572f9f0e0c7, type: 3}
   poolDuration: 0
   poolDamagePerSec: 0
+  lifeTime: 1
+  particleTime: 0
+  splashParticle: {fileID: 0}
 --- !u!114 &4711111931762716562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +194,6 @@ MonoBehaviour:
   - Minion
   damageValue: 3
   damageInterval: 2
-  isProjectile: 1
-  particleSpawn: {fileID: 0}
-  particleTime: 0
+  isProjectile: 0
+  particleSpawn: {fileID: 5336040042352033598, guid: df80be5bf19164a68b7f5d43eb1f5db5, type: 3}
+  particleTime: 5

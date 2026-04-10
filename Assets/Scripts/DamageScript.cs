@@ -35,12 +35,35 @@ public class DamageScript : MonoBehaviour
         {
             targetHealth = temp;
             touchingTarget = true;
-
+            nextDamageTime = Time.time + damageInterval; // ← add this line
             // Deal immediate damage on first contact
             ApplyDamage();
         }
 
         // Projectiles damage once and disappear
+        if (isProjectile)
+        {
+            SpawnParticle();
+            Destroy(gameObject);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        for (int i = 0; i < tagImmune.Length; i++)
+            if (collision.gameObject.CompareTag(tagImmune[i])) return;
+
+        if (collision.gameObject.CompareTag("Larva Egg"))
+            if (collision.gameObject.TryGetComponent(out LarvaScript egg))
+                egg.BreakEgg(false);
+
+        if (collision.gameObject.TryGetComponent(out Health temp))
+        {
+           targetHealth = temp;
+            touchingTarget = true;
+            nextDamageTime = Time.time + damageInterval; // ← set cooldown BEFORE first hit
+            ApplyDamage();
+        }
+
         if (isProjectile)
         {
             SpawnParticle();
@@ -73,6 +96,15 @@ public class DamageScript : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        // Only stop damaging if THIS exact object is the one we were hitting
+        if (targetHealth != null && collision.gameObject == targetHealth.gameObject)
+        {
+            touchingTarget = false;
+            targetHealth = null;
+        }
+    }
     private void SpawnParticle()
     {
         GameObject p = Instantiate(particleSpawn, transform.position, Quaternion.identity);

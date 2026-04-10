@@ -10,7 +10,7 @@ public class AttackLarvaBomb : BaseAttack
     public GameObject larvaPrefab;
     public int        larvaCount  = 5;
     public float      launchSpeed = 6f;
-    public float      hatchDelay  = 3f;
+    public float      hatchDelay  = 7f;
     public float      spread      = 60f;
 
     public Animator bossAnimator;

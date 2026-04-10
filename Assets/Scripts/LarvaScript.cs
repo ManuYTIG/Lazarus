@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class LarvaScript : MonoBehaviour
 {
-    public float lifeTime = 5f; // DurÈe de vie de la larve en secondes
-    public float brokenEggDuration = 2f; // DurÈe pendant laquelle l'úuf cassÈ reste ‡ l'Ècran
-    public Sprite eggSprite; // Sprite de l'úuf
-    public Sprite brokenEggSprite;// Sprite de l'úuf cassÈ
-    public GameObject larvaPrefab; // PrÈfabriquÈ de la larve ‡ instancier
-    public ParticleSystem breakParticles; // Particules ‡ jouer lors de la cassure de l'úuf
+    public float lifeTime = 5f; // DurÔøΩe de vie de la larve en secondes
+    public float brokenEggDuration = 2f; // DurÔøΩe pendant laquelle l'ÔøΩuf cassÔøΩ reste ÔøΩ l'ÔøΩcran
+    public Sprite eggSprite; // Sprite de l'ÔøΩuf
+    public Sprite brokenEggSprite;// Sprite de l'ÔøΩuf cassÔøΩ
+    public GameObject larvaPrefab; // PrÔøΩfabriquÔøΩ de la larve ÔøΩ instancier
+    public GameObject breakParticles; // Particules ÔøΩ jouer lors de la cassure de l'ÔøΩuf
     public float recoilForce;
     public float wobbleScale = 0.9f;   // how much it squashes
     public float wobbleTime = 0.1f;    // how fast it wobbles
@@ -18,11 +18,14 @@ public class LarvaScript : MonoBehaviour
     private bool isWobbling = false;
     private float nextWobbleTime;
     private bool isBroken = false;
+    public float particleTime;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        ScheduleNextWobble();
+        isBroken = false;
+        GetComponent<SpriteRenderer>().sprite = eggSprite;
+        ScheduleNextWobble(); // sets nextWobbleTime to a proper random value
     }
 
     // Update is called once per frame
@@ -49,27 +52,23 @@ public class LarvaScript : MonoBehaviour
             }
         }
     }
-    public void BreakEgg(Boolean spawn)
+    public void BreakEgg(bool spawn)
     {
-        // Change le sprite pour l'úuf cassÈ
-        GetComponent<SpriteRenderer>().sprite = brokenEggSprite;
-        // Joue les particules de cassure
-        if (breakParticles != null)
-        {
-            breakParticles.Play();
-        }
-        if(spawn)
-        {
-            // Instancie la larve ‡ la position de l'úuf
-            Instantiate(larvaPrefab, transform.position, Quaternion.identity);
-        }
+        if (isBroken) return; // ‚Üê prevent double-call
         isBroken = true;
-        // DÈtruit l'úuf aprËs un dÈlai pour laisser le temps aux particules de jouer
+
+        GetComponent<SpriteRenderer>().sprite = brokenEggSprite;
+
+        if (breakParticles != null) SpawnParticle();
+
+        if (spawn)
+        Instantiate(larvaPrefab, transform.position, Quaternion.identity);
+
         Destroy(gameObject, brokenEggDuration);
     }
     private IEnumerator Wobble()
     {
-        if (isWobbling) yield break;
+        if (isWobbling || isBroken) yield break;
         isWobbling = true;
 
         Vector3 originalScale = transform.localScale;
@@ -92,6 +91,11 @@ public class LarvaScript : MonoBehaviour
     {
         // Random delay between 0.5 and 2 seconds (adjust as you like)
         nextWobbleTime = UnityEngine.Random.Range(0.5f, 2f);
+    }
+    private void SpawnParticle()
+    {
+        GameObject p = Instantiate(breakParticles, transform.position, Quaternion.identity);
+        Destroy(p, particleTime);
     }
 }
 

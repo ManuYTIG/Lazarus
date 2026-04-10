@@ -110,10 +110,11 @@ MonoBehaviour:
   eggSprite: {fileID: 1210760479841885144, guid: 04dabcbedd35e7d4ca045b7fa86ab93e, type: 3}
   brokenEggSprite: {fileID: -3216189146986437283, guid: 3bc46b014ba7516459c6062c5307d715, type: 3}
   larvaPrefab: {fileID: 6718859521627394775, guid: c7a421caa9c4c574ca561a04d3430ff0, type: 3}
-  breakParticles: {fileID: 8963932143425446902, guid: c8d295366f19cc843a0e5bb3751238ba, type: 3}
+  breakParticles: {fileID: 1074068821536218501, guid: c8d295366f19cc843a0e5bb3751238ba, type: 3}
   recoilForce: 0
   wobbleScale: 0.9
   wobbleTime: 0.1
+  particleTime: 3
 --- !u!50 &997665236668994194
 Rigidbody2D:
   serializedVersion: 5
