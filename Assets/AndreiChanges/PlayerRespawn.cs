@@ -5,6 +5,7 @@ public class PlayerRespawn : MonoBehaviour
 {
     public Vector3 spawnPoint;
     public GameObject deathParticlesPrefab;
+    public AudioClip gameOverSound; // <-- added
 
     private PlayerController playerController;
     private Rigidbody2D rb;
@@ -14,6 +15,7 @@ public class PlayerRespawn : MonoBehaviour
     private TimerSystem timerSystem;
     private Health health;
     public RawImage runoutScreen;
+    private AudioSource audioSource; // <-- added
 
     private void Awake()
     {
@@ -24,10 +26,15 @@ public class PlayerRespawn : MonoBehaviour
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         timerSystem = FindObjectOfType<TimerSystem>();
         health = GetComponent<Health>();
+        audioSource = GetComponent<AudioSource>(); // <-- added
     }
 
     public void Die()
     {
+        // Play sound
+        if (audioSource != null && gameOverSound != null)
+            audioSource.PlayOneShot(gameOverSound); // <-- added
+
         if (deathParticlesPrefab != null)
         {
             GameObject particles = Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);
@@ -39,7 +46,6 @@ public class PlayerRespawn : MonoBehaviour
         if (boxCollider != null) boxCollider.enabled = false;
         if (animator != null) animator.enabled = false;
         if (timerSystem != null) timerSystem.enabled = false;
-
         foreach (SpriteRenderer sr in spriteRenderers)
             sr.enabled = false;
 
@@ -51,7 +57,6 @@ public class PlayerRespawn : MonoBehaviour
     {
         runoutScreen.color = new Color(runoutScreen.color.r, runoutScreen.color.g, runoutScreen.color.b, 0);
         transform.position = spawnPoint;
-
         if (playerController != null) playerController.enabled = true;
         if (rb != null) rb.simulated = true;
         if (boxCollider != null) boxCollider.enabled = true;
@@ -66,7 +71,6 @@ public class PlayerRespawn : MonoBehaviour
             timerSystem.ResetTimer();
         }
         if (health != null) health.ResetHealth();
-
         foreach (SpriteRenderer sr in spriteRenderers)
             sr.enabled = true;
     }

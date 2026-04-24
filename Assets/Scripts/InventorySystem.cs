@@ -6,10 +6,16 @@ public class InventorySystem : MonoBehaviour
     public ItemData[] items;
     private List<ItemData> inventory = new List<ItemData>();
     public SpriteRenderer itemHolder;
+    private GameObject holderGameObject;
     private ItemData currentItemData;
     private GameObject addPrefInstance;
     private bool itemActive;
 
+
+    private void Start()
+    {
+        holderGameObject = itemHolder.gameObject;
+    }
     public bool AddItem(ItemData item)
     {
         if (inventory.Count >= 1) return false;
@@ -74,4 +80,9 @@ public class InventorySystem : MonoBehaviour
     }
 
     public ItemData Getitem() => inventory.Count > 0 ? inventory[0] : null;
+
+    public GameObject getHolderObject()
+    {
+        return holderGameObject;
+    }
 }

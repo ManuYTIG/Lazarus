@@ -251,7 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy1
   speed: 2
   detectionRange: 5
-  player: {fileID: 3146884088856338670, guid: 9fc07e4da89644beaa97c55b5c2b26eb, type: 3}
+  targetTag: Player
 --- !u!114 &7303452415718573661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e9607f3cd8f4ff4a5d8bef01f5e4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageScript
-  tagImmune: Enemy 1
+  tagImmune: []
   damageValue: 0.97
   damageInterval: 1
   isProjectile: 0

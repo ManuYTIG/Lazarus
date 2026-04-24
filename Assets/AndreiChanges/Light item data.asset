@@ -15,6 +15,6 @@ MonoBehaviour:
   ID: light_item
   Name: light item
   Description: arme que tu swing
-  Icon: {fileID: -855298285791758126, guid: 0f7fd1bfcc8bb5543984486f6f2b3f31, type: 3}
+  Icon: {fileID: 6116216185258282175, guid: cf71a25e492469f479d855a54cd7a72f, type: 3}
   Prefab: {fileID: 5167243543411565469, guid: 5d269a90b1a2db1409131a1fb514dc41, type: 3}
   AdditionalPrefab: {fileID: 426849716639443077, guid: be4981fefc1643c4f807fc82029a59c9, type: 3}

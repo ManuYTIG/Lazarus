@@ -48,6 +48,10 @@ public class Health : MonoBehaviour
         {
             if (playerRespawn != null)
                 playerRespawn.Die(); // <-- calls Die() instead of Destroy
+            else if (gameObject.TryGetComponent(out Enemy2 temp)) {
+                temp.Explode();
+                Destroy(gameObject);
+            }
             else
                 Destroy(gameObject); // fallback if no PlayerRespawn exists
         }
