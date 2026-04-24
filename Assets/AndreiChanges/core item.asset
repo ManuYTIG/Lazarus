@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50e077458d81cd0419ad6668f73bac19, type: 3}
   m_Name: core item
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  ID: 
-  Name: 
+  ID: core_item
+  Name: Core
   Description: 
   Icon: {fileID: 0}
   Prefab: {fileID: 0}
