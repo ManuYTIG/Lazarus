@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerRespawn : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerRespawn : MonoBehaviour
     private SpriteRenderer[] spriteRenderers;
     private TimerSystem timerSystem;
     private Health health;
+    public RawImage runoutScreen;
 
     private void Awake()
     {
@@ -44,8 +46,10 @@ public class PlayerRespawn : MonoBehaviour
         Invoke("Respawn", 1.5f);
     }
 
+
     public void Respawn()
     {
+        runoutScreen.color = new Color(runoutScreen.color.r, runoutScreen.color.g, runoutScreen.color.b, 0);
         transform.position = spawnPoint;
 
         if (playerController != null) playerController.enabled = true;
