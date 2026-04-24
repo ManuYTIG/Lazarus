@@ -69,7 +69,7 @@ public class Enemy2 : MonoBehaviour
             touchingTarget = false;
     }
     public void Explode() {
-        StartCoroutine(ScreenShake(1f, 2f)); 
+        StartCoroutine(ScreenShake(1f, 0.4f)); 
         GameObject p = Instantiate(particlePrefab, transform.position, Quaternion.identity);
         Destroy(p, particleTime);
         GameObject d = Instantiate(explosionZone, transform.position, Quaternion.identity);

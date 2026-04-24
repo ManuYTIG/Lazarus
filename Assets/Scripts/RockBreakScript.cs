@@ -16,7 +16,7 @@ public class RockBreakScript : MonoBehaviour
             Destroy(gameObject);
             GameObject p = Instantiate(particlePrefab, transform.position, Quaternion.identity);
             Destroy(p, particleTime);
-            StartCoroutine(ScreenShake(0.5f, 1f)); 
+            StartCoroutine(ScreenShake(0.5f, 0.5f)); 
         }
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
