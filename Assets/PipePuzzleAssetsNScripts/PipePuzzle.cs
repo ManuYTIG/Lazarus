@@ -79,13 +79,15 @@ public class PipeDisplay : MonoBehaviour
                             {
                                 if (Pipe7Value == 1)
                                 {
-                                    if (Pipe8Value == 2)
-                                    {
-                                        if (Pipe9Value == 4)
-                                        {
-                                            Debug.Log("Correct"); //This is where script that calls for something like opening a door goes
-                                        }
-                                    }
+                                    //The tagged out code below calls to change the sprite in the Pipe script
+                                    //Pipe1R.ChangeButtonImage();
+                                    //Pipe2R.ChangeButtonImage();
+                                    //Pipe3R.ChangeButtonImage();
+                                    //Pipe4R.ChangeButtonImage();
+                                    //Pipe5R.ChangeButtonImage();
+                                    //Pipe6R.ChangeButtonImage();
+                                    //Pipe7R.ChangeButtonImage();
+                                    Debug.Log("Correct"); //This is where script that calls for something like opening a door goes
                                 }
                             }
                         }
