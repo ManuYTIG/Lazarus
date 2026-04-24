@@ -158,8 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e66a815d9ab4e08abd75c75f8d4da0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RockBreakScript
-  collider: {fileID: 0}
-  particlePrefab: {fileID: 0}
+  collider: {fileID: 4721679603032075973}
+  particlePrefab: {fileID: 7205528157178945008, guid: 84fad9919b4e94470a2c5c64dd76f261, type: 3}
 --- !u!114 &9209924042392228636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_ShadowGroup: 0
   m_Priority: 0
   m_ComponentVersion: 5
-  m_HasRenderer: 0
+  m_HasRenderer: 1
   m_UseRendererSilhouette: 1
   m_CastsShadows: 1
   m_SelfShadows: 0
@@ -195,18 +195,18 @@ MonoBehaviour:
   m_ShadowMesh:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
-      m_Center: {x: -0.10560608, y: 0, z: 0}
-      m_Extent: {x: 0.4610443, y: 0.8999939, z: 0}
+      m_Center: {x: -0.09996796, y: -0.70832825, z: 0}
+      m_Extent: {x: 0.3596573, y: 0.19166565, z: 0}
     m_EdgeProcessing: 1
     m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0.1
+    m_InitialTrim: 0
   m_CastingOption: 1
-  m_PreviousTrimEdge: 0
-  m_PreviousEdgeProcessing: -1
-  m_PreviousShadowCastingSource: -1
-  m_PreviousShadowShape2DSource: {fileID: 0}
+  m_PreviousTrimEdge: 0.1
+  m_PreviousEdgeProcessing: 1
+  m_PreviousShadowCastingSource: 2
+  m_PreviousShadowShape2DSource: {fileID: 4721679603032075973}
   references:
     version: 2
     RefIds:
