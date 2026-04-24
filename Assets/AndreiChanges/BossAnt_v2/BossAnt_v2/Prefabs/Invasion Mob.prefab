@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2856319067193642877}
   - component: {fileID: 5081538162181265497}
   - component: {fileID: 4001128469250213838}
-  - component: {fileID: 4194276237493117451}
   - component: {fileID: 2680025641834738305}
+  - component: {fileID: 2375201888297681288}
   m_Layer: 0
   m_Name: Invasion Mob
   m_TagString: Minion
@@ -188,21 +188,6 @@ MonoBehaviour:
   maxHealth: 15
   spriteRenderer: {fileID: 7496661497840460073}
   healthBarPrefab: {fileID: 2449947681089070658, guid: 51cc79e695630ea48876d68b89e8a3d9, type: 3}
---- !u!114 &4194276237493117451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3737480824366036189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a394b5acccaf3747b9ac720cfdd16a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy1
-  speed: 1.5
-  detectionRange: 5
-  targetTag: Player
 --- !u!50 &2680025641834738305
 Rigidbody2D:
   serializedVersion: 5
@@ -230,3 +215,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2375201888297681288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3737480824366036189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a879a3e568f1a46c8b367fbcfd54db11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy2
+  speed: 1
+  detectionRange: 5
+  targetTag: Player
+  particlePrefab: {fileID: 3623658852602815741, guid: 9932508891b53443182770523120f6cb, type: 3}
+  explosionZone: {fileID: 5697735638029581774, guid: 676a492ff65d64c3f90e247bf1abcfa7, type: 3}
+  particleTime: 2
+  explosionTime: 2
