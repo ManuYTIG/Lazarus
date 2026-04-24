@@ -28,28 +28,28 @@ public class LightStickItem : MonoBehaviour
         int steps = 5;
         float halfAngle = swingAngle / 2f;
 
-        for (int i = 0; i <= steps; i++)
+       for (int i = 0; i <= steps; i++)
+{
+    float t = (float)i / steps;
+    float currentAngle = (baseAngle - halfAngle + swingAngle * t) * Mathf.Deg2Rad;
+    Vector2 checkDir = new Vector2(Mathf.Cos(currentAngle), Mathf.Sin(currentAngle));
+
+    RaycastHit2D hit = Physics2D.Raycast(playerPos, checkDir, swingRange, ~LayerMask.GetMask("Player"));
+    Debug.DrawRay(playerPos, checkDir * swingRange, Color.yellow, 0.2f);
+
+    if (hit.collider != null)
+    {
+        bool immune = false;
+        foreach (string tag in immuneTags)
+            if (hit.collider.CompareTag(tag)) { immune = true; break; }
+
+        if (!immune && hit.collider.TryGetComponent(out Health h))
         {
-
-            float t = (float)i / steps;
-            float currentAngle = (baseAngle - halfAngle + swingAngle * t) * Mathf.Deg2Rad;
-            Vector2 checkDir = new Vector2(Mathf.Cos(currentAngle), Mathf.Sin(currentAngle));
-
-            // Raycast dans chaque direction de l'arc
-            RaycastHit2D hit = Physics2D.Raycast(playerPos, checkDir, swingRange, ~LayerMask.GetMask("Player"));
-Debug.DrawRay(playerPos, checkDir * swingRange, Color.yellow, 0.2f);
-Debug.Log($"Ray hit: {(hit.collider != null ? hit.collider.name : "nothing")}");
-
-            if (hit.collider != null)
-            {
-                bool immune = false;
-                foreach (string tag in immuneTags)
-                    if (hit.collider.CompareTag(tag)) { immune = true; break; }
-
-                if (!immune && hit.collider.TryGetComponent(out Health h))
-                    h.RemoveHealth(damage);
-            }
+            h.RemoveHealth(damage);
+            break;
         }
+    }
+}
 
         yield return new WaitForSeconds(swingDuration);
         isSwinging = false;
