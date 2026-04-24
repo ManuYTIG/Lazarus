@@ -45,6 +45,11 @@ public class PickableItem : MonoBehaviour
     {
         if (inventorySystem != null && inventorySystem.AddItem(itemData)) // Try to add the item to the inventory
         {
+            if (itemData.ID == "core_item")
+            {
+                 CoreItem core = GetComponent<CoreItem>();
+                 if (core != null) core.OnPickedUp();
+                 }
             Destroy(keyInstance.gameObject); // Destroy the key instance from the scene
             Destroy(gameObject); // Destroy the pickable item from the scene if it was successfully added to the inventory
         }
