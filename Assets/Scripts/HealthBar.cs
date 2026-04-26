@@ -50,7 +50,6 @@ public class HealthBar : MonoBehaviour
 
         if (currentRatioDelta != (float)(health.health) / health.maxHealth && (Time.time - prevTime) > timeBuffer)
         {
-            Debug.Log("delta: " + currentRatioDelta);
             currentRatioDelta = Mathf.Lerp(prevDeltaHealth / health.maxHealth,
                 ratio, (Time.time - prevTime - timeBuffer) / deltaDuration);
         }
