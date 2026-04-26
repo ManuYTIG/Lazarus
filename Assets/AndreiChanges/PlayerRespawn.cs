@@ -6,6 +6,8 @@ public class PlayerRespawn : MonoBehaviour
     public Vector3 spawnPoint;
     public GameObject deathParticlesPrefab;
     public AudioClip gameOverSound; // <-- added
+    public Image TimerRunOutImg;
+    public GameObject GameUI;
 
     private PlayerController playerController;
     private Rigidbody2D rb;
@@ -14,7 +16,6 @@ public class PlayerRespawn : MonoBehaviour
     private SpriteRenderer[] spriteRenderers;
     private TimerSystem timerSystem;
     private Health health;
-    public RawImage runoutScreen;
     private AudioSource audioSource; // <-- added
 
     private void Awake()
@@ -24,7 +25,7 @@ public class PlayerRespawn : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-        timerSystem = FindObjectOfType<TimerSystem>();
+        timerSystem = FindFirstObjectByType<TimerSystem>();
         health = GetComponent<Health>();
         audioSource = GetComponent<AudioSource>(); // <-- added
     }
@@ -55,7 +56,7 @@ public class PlayerRespawn : MonoBehaviour
 
     public void Respawn()
     {
-        runoutScreen.color = new Color(runoutScreen.color.r, runoutScreen.color.g, runoutScreen.color.b, 0);
+        TimerRunOutImg.color = new Color(TimerRunOutImg.color.r, TimerRunOutImg.color.g, TimerRunOutImg.color.b, 0f);
         transform.position = spawnPoint;
         if (playerController != null) playerController.enabled = true;
         if (rb != null) rb.simulated = true;
@@ -73,5 +74,6 @@ public class PlayerRespawn : MonoBehaviour
         if (health != null) health.ResetHealth();
         foreach (SpriteRenderer sr in spriteRenderers)
             sr.enabled = true;
+        GameUI.SetActive(true);
     }
 }

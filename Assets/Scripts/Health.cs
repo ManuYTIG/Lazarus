@@ -47,8 +47,12 @@ public class Health : MonoBehaviour
         if (health <= 0)
         {
             if (playerRespawn != null)
+            {
+                Debug.Log("Kill player");
                 playerRespawn.Die(); // <-- calls Die() instead of Destroy
-            else if (gameObject.TryGetComponent(out Enemy2 temp)) {
+            }
+            else if (gameObject.TryGetComponent(out Enemy2 temp))
+            {
                 temp.Explode();
                 Destroy(gameObject);
             }
