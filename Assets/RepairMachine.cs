@@ -5,14 +5,26 @@ public class RepairMachine : MonoBehaviour
     [Header("Repair Settings")]
     public int hpBonusPerRepair = 2;
 
+    [Header("Machine Sprites")]
+    public Sprite state0; // éteinte
+    public Sprite state1; // core installé
+    public Sprite state2; // barre installée
+    public Sprite state3; // électricité rétablie
+
+    private SpriteRenderer sr;
     private bool playerInRange = false;
     private PlayerController player;
     private Health playerHealth;
 
-    // État des réparations
     private bool coreInstalled = false;
     private bool stickInstalled = false;
     private bool thirdInstalled = false;
+
+    void Start()
+    {
+        sr = GetComponent<SpriteRenderer>();
+        if (state0 != null) sr.sprite = state0;
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -41,14 +53,19 @@ public class RepairMachine : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             ItemData item = player.inventorySystem.Getitem();
-            if (item == null) return;
+
+            if (item == null)
+            {
+                // Pas d'item — interaction finale (rétablir électricité)
+                if (stickInstalled && !thirdInstalled)
+                    ActivateFinal();
+                return;
+            }
 
             if (item.ID == "core_item" && !coreInstalled)
                 InstallCore(item);
             else if (item.ID == "light_item" && !stickInstalled && coreInstalled)
                 InstallStick(item);
-            else if (item.ID == "third_item" && !thirdInstalled && stickInstalled)
-                InstallThird(item);
         }
     }
 
@@ -57,10 +74,10 @@ public class RepairMachine : MonoBehaviour
         player.inventorySystem.RemoveItem(item);
         coreInstalled = true;
         ApplyHPBonus();
+        if (state1 != null) sr.sprite = state1;
         CameraFollow.instance?.TriggerShake(0.4f, 0.2f);
         MemoryManager.instance?.OnRepair(1);
         Debug.Log("[Machine] Core installé — Réparation 1");
-        // TODO: illuminer slot barre
     }
 
     private void InstallStick(ItemData item)
@@ -68,19 +85,20 @@ public class RepairMachine : MonoBehaviour
         player.inventorySystem.RemoveItem(item);
         stickInstalled = true;
         ApplyHPBonus();
+        if (state2 != null) sr.sprite = state2;
         CameraFollow.instance?.TriggerShake(0.4f, 0.2f);
         MemoryManager.instance?.OnRepair(2);
         Debug.Log("[Machine] Barre installée — Réparation 2");
     }
 
-    private void InstallThird(ItemData item)
+    private void ActivateFinal()
     {
-        player.inventorySystem.RemoveItem(item);
         thirdInstalled = true;
         ApplyHPBonus();
-        CameraFollow.instance?.TriggerShake(0.4f, 0.2f);
+        if (state3 != null) sr.sprite = state3;
+        CameraFollow.instance?.TriggerShake(0.6f, 0.3f);
         MemoryManager.instance?.OnRepair(3);
-        Debug.Log("[Machine] Troisième item installé — Réparation 3");
+        Debug.Log("[Machine] Électricité rétablie — Machine complète");
     }
 
     private void ApplyHPBonus()
