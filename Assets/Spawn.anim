@@ -183,9 +183,9 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.9166667
-    functionName: OnSpawnFinished
+    functionName: SpawnFinished
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 11500000, guid: 1961caa22e30b6041982b98ac253449b, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

@@ -6,16 +6,29 @@ public class GameManager : MonoBehaviour
     public GameObject MenuUI;
     public GameObject SettingsUI;
     public GameObject GameUI;
+    public GameObject inGameUI;
+    public GameObject dyingCharacter;
+    public GameObject Timer;
+    public Camera cam;
+    private ZoomHandler zoomHandle;
+    private TimerSystem timerSystem;
     private PlayerRespawn playerRespawn;
     private bool startedGame;
+    private PlayerController movement;
+    private Animator anim;
+    private DyingCharacterSceneHandler dyingCharacterSceneHandler;
+    private int numRespawns = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        zoomHandle = cam.GetComponent<ZoomHandler>();
         playerRespawn = player.GetComponent<PlayerRespawn>();
-        SettingsUI.SetActive(false);
-        GameUI.SetActive(false);
-        MenuUI.SetActive(true);
+        timerSystem = Timer.GetComponent<TimerSystem>();
+        dyingCharacterSceneHandler = dyingCharacter.GetComponent<DyingCharacterSceneHandler>(); 
+        anim = player.GetComponent<Animator>();
+        movement = player.GetComponent<PlayerController>();
+        setMenuUIScreen();
     }
 
     // Update is called once per frame
@@ -28,12 +41,23 @@ public class GameManager : MonoBehaviour
     {
         MenuUI.SetActive(false);
         SettingsUI.SetActive(false);
-        if(!startedGame) playerRespawn.Respawn();
+        inGameUI.SetActive(false);
+        if (!startedGame)
+        {
+            Debug.Log("First game start");
+            playerRespawn.Respawn();
+        } else
+        {
+            movement.enabled = true;
+        }
     }
 
     public void setSettingsUIScreen()
     {
-        GameUI.SetActive(true);
+        GameUI.SetActive(false);
+        if(movement != null)
+            movement.enabled = false;
+        else Debug.LogWarning("PlayerController component not found on player object.");
         MenuUI.SetActive(false);
         SettingsUI.SetActive(true);
     }
@@ -47,6 +71,41 @@ public class GameManager : MonoBehaviour
     {
         SettingsUI.SetActive(false);
         GameUI.SetActive(false);
+        movement.enabled = false;
         MenuUI.SetActive(true);
+    }
+
+    public void OnSpawnFinished()
+    {
+        if (numRespawns == 0)
+        {
+            Debug.Log("First respawn");
+            zoomHandle.enabled = false;
+            dyingCharacterSceneHandler.StartDyingSequence();
+        }
+        else if (movement != null)
+        {
+            Debug.Log("Random respawn");
+            StartGamePlay();
+        }
+
+
+        numRespawns++;
+
+    }
+
+    public void StartGamePlay()
+    {
+        Debug.Log("Starting gameplay");
+        inGameUI.SetActive(true);
+        zoomHandle.enabled = true;
+        movement.enabled = true;
+        if (anim != null)
+            anim.enabled = false;
+        if (timerSystem != null)
+        {
+            timerSystem.enabled = true;
+            timerSystem.ResetTimer();
+        }
     }
 }
