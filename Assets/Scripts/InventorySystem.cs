@@ -6,28 +6,20 @@ public class InventorySystem : MonoBehaviour
     public ItemData[] items;
     private List<ItemData> inventory = new List<ItemData>();
     public SpriteRenderer itemHolder;
-    private GameObject holderGameObject;
-    private ItemData currentItemData;
     private GameObject addPrefInstance;
     private bool itemActive;
 
-
-    private void Start()
-    {
-        holderGameObject = itemHolder.gameObject;
-    }
     public bool AddItem(ItemData item)
     {
         if (inventory.Count >= 1) return false;
         Debug.Log($"Adding item: {item.Name} to inventory.");
         inventory.Add(item);
         itemHolder.sprite = item.Icon;
-        currentItemData = item;
 
         if (item.AdditionalPrefab != null)
         {
             addPrefInstance = Instantiate(item.AdditionalPrefab, transform);
-            addPrefInstance = Instantiate(item.AdditionalPrefab, transform);
+            addPrefInstance.SetActive(true);
         }
 
         itemActive = false;
@@ -47,9 +39,7 @@ public class InventorySystem : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R) && inventory.Count > 0)
-        {
             RemoveItem(inventory[0]);
-        }
 
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -64,25 +54,27 @@ public class InventorySystem : MonoBehaviour
     public bool RemoveItem(ItemData item)
     {
         itemHolder.sprite = null;
-
         if (addPrefInstance != null)
         {
             Destroy(addPrefInstance);
             addPrefInstance = null;
         }
-
-        currentItemData = null;
         GameObject p = Instantiate(item.Prefab, transform.position, Quaternion.identity);
         if (p.TryGetComponent(out Rigidbody2D rb))
             rb.AddForce(Vector2.up * 5f, ForceMode2D.Impulse);
-
         return inventory.Remove(item);
     }
 
-    public ItemData Getitem() => inventory.Count > 0 ? inventory[0] : null;
-
-    public GameObject getHolderObject()
+    public void ConsumeItem(ItemData item)
     {
-        return holderGameObject;
+        itemHolder.sprite = null;
+        if (addPrefInstance != null)
+        {
+            Destroy(addPrefInstance);
+            addPrefInstance = null;
+        }
+        inventory.Remove(item);
     }
+
+    public ItemData Getitem() => inventory.Count > 0 ? inventory[0] : null;
 }

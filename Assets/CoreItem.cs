@@ -16,8 +16,8 @@ public class CoreItem : MonoBehaviour
 
     private void PlaySound()
     {
-        if (pickupSound != null)
-            AudioSource.PlayClipAtPoint(pickupSound, transform.position);
+    if (pickupSound != null)
+        AudioSource.PlayClipAtPoint(pickupSound, Camera.main.transform.position, 1f);
     }
 
     private void TriggerScreenEffect()

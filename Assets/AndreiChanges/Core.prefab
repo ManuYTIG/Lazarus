@@ -105,8 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8e8425aaed5e664d86371f6d8392c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickableItem
-  keyPrefab: {fileID: 0}
-  buttonTexture: {fileID: 2800000, guid: 581a029c03715b4429f73d7c242ce80d, type: 3}
+  keyPrefab: {fileID: 8847680725329592777, guid: d8f5a69ce654cd344bfaddc93bde2ea7, type: 3}
+  buttonTexture: {fileID: 2800000, guid: 05986375c19410e43ad941ad55611375, type: 3}
   itemData: {fileID: 11400000, guid: 0dbcf7a70b5815b4fb181a0e97ea9096, type: 2}
 --- !u!114 &6996699440153612852
 MonoBehaviour:
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51e50dd601ccae4da3cda410574a34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  pickupSound: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: 3a6d40954761b534c9e7f5c77c160401, type: 3}
   screenShakeDuration: 1
   memoryText: ...quelque chose de familier.
 --- !u!58 &2206800943681366877

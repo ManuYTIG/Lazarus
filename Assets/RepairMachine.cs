@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RepairMachine : MonoBehaviour
 {
@@ -6,10 +7,21 @@ public class RepairMachine : MonoBehaviour
     public int hpBonusPerRepair = 2;
 
     [Header("Machine Sprites")]
-    public Sprite state0; // éteinte
-    public Sprite state1; // core installé
-    public Sprite state2; // barre installée
-    public Sprite state3; // électricité rétablie
+    public Sprite state0;
+    public Sprite state1;
+    public Sprite state2;
+    public Sprite state3;
+
+    [Header("Key Prompt")]
+    public GameObject keyPrefab;
+    public Texture2D buttonTexture;
+    private Image keyImage;
+    private Transform keyInstance;
+
+    [Header("Sound Effects")]
+    public AudioClip installSound;
+    public AudioClip finalActivationSound;
+    private AudioSource audioSource;
 
     private SpriteRenderer sr;
     private bool playerInRange = false;
@@ -22,8 +34,22 @@ public class RepairMachine : MonoBehaviour
 
     void Start()
     {
+        audioSource = gameObject.AddComponent<AudioSource>();
+    audioSource.spatialBlend = 0f;
         sr = GetComponent<SpriteRenderer>();
         if (state0 != null) sr.sprite = state0;
+
+        Sprite s = Sprite.Create(
+            buttonTexture,
+            new Rect(0, 0, buttonTexture.width, buttonTexture.height),
+            new Vector2(0.5f, 0.5f)
+        );
+        keyInstance = Instantiate(keyPrefab).transform;
+        keyInstance.SetParent(transform, worldPositionStays: true);
+        keyInstance.localPosition = new Vector3(0, 1.2f, 0);
+        keyInstance.gameObject.SetActive(false);
+        keyImage = keyInstance.Find("View").GetComponent<Image>();
+        keyImage.sprite = s;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -33,9 +59,16 @@ public class RepairMachine : MonoBehaviour
             playerInRange = true;
             player = other.GetComponent<PlayerController>();
             playerHealth = other.GetComponent<Health>();
+            keyInstance.gameObject.SetActive(true);
         }
     }
 
+   private void PlaySound(AudioClip clip)
+    {
+    if (clip != null && audioSource != null)
+        audioSource.PlayOneShot(clip, 0.5f); // change 0.5f pour ajuster
+    
+    }
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -43,6 +76,7 @@ public class RepairMachine : MonoBehaviour
             playerInRange = false;
             player = null;
             playerHealth = null;
+            keyInstance.gameObject.SetActive(false);
         }
     }
 
@@ -56,7 +90,6 @@ public class RepairMachine : MonoBehaviour
 
             if (item == null)
             {
-                // Pas d'item — interaction finale (rétablir électricité)
                 if (stickInstalled && !thirdInstalled)
                     ActivateFinal();
                 return;
@@ -71,7 +104,8 @@ public class RepairMachine : MonoBehaviour
 
     private void InstallCore(ItemData item)
     {
-        player.inventorySystem.RemoveItem(item);
+        PlaySound(installSound);
+        player.inventorySystem.ConsumeItem(item);
         coreInstalled = true;
         ApplyHPBonus();
         if (state1 != null) sr.sprite = state1;
@@ -82,7 +116,8 @@ public class RepairMachine : MonoBehaviour
 
     private void InstallStick(ItemData item)
     {
-        player.inventorySystem.RemoveItem(item);
+        PlaySound(installSound);
+        player.inventorySystem.ConsumeItem(item);
         stickInstalled = true;
         ApplyHPBonus();
         if (state2 != null) sr.sprite = state2;
@@ -93,6 +128,7 @@ public class RepairMachine : MonoBehaviour
 
     private void ActivateFinal()
     {
+        PlaySound(installSound);
         thirdInstalled = true;
         ApplyHPBonus();
         if (state3 != null) sr.sprite = state3;

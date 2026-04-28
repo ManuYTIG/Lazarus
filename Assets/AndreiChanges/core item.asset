@@ -16,5 +16,5 @@ MonoBehaviour:
   Name: Core
   Description: 
   Icon: {fileID: 0}
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 334338696616166210, guid: b35328e803f4ff04ea1dbc3742980fb7, type: 3}
   AdditionalPrefab: {fileID: 0}
