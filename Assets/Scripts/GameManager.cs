@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject dyingCharacter;
     public GameObject Timer;
     public Camera cam;
+    public GameObject skipSceneObject;
     private ZoomHandler zoomHandle;
     private TimerSystem timerSystem;
     private PlayerRespawn playerRespawn;
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     private Animator anim;
     private DyingCharacterSceneHandler dyingCharacterSceneHandler;
     private int numRespawns = 0;
+    private int currentSceneIndex = -1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,13 +30,26 @@ public class GameManager : MonoBehaviour
         dyingCharacterSceneHandler = dyingCharacter.GetComponent<DyingCharacterSceneHandler>(); 
         anim = player.GetComponent<Animator>();
         movement = player.GetComponent<PlayerController>();
+        skipSceneObject.SetActive(false);
         setMenuUIScreen();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void SkipScene()
+    {
+        if (currentSceneIndex == 0)
+        {
+            Debug.Log("Skipping first scene");
+            dyingCharacterSceneHandler.StopScene();
+        }
+
+        skipSceneObject.SetActive(false);
+        StartGamePlay();
     }
 
     public void startGame()
@@ -79,6 +94,8 @@ public class GameManager : MonoBehaviour
     {
         if (numRespawns == 0)
         {
+            skipSceneObject.SetActive(true);
+            currentSceneIndex = 0;
             Debug.Log("First respawn");
             zoomHandle.enabled = false;
             dyingCharacterSceneHandler.StartDyingSequence();
@@ -96,6 +113,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGamePlay()
     {
+        currentSceneIndex = -1;
         Debug.Log("Starting gameplay");
         inGameUI.SetActive(true);
         zoomHandle.enabled = true;

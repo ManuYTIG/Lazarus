@@ -18,8 +18,17 @@ public class DialogueHandler : MonoBehaviour
     void Start()
     {
         //find necessary components
-        dialogueCharacterImg = CharacterImage.GetComponent<Image>();
         dialogueText = TextDialogue.GetComponent<TextMeshProUGUI>();
+        dialogueCharacterImg = CharacterImage.GetComponent<Image>();
+        gameObject.SetActive(false);
+    }
+
+    public void StopDialogue()
+    {
+        dialogueText.text = "";
+        isTyping = false;
+        timer = 0f;
+        stayActive = false;
         gameObject.SetActive(false);
     }
 
@@ -36,6 +45,7 @@ public class DialogueHandler : MonoBehaviour
             dialogueText.text = "";
             isTyping = true;
             this.charSpeed = charSpeed;
+            timeAfterDialogue = 2f;
             timer = 0f;
             stayActive = false;
             gameObject.SetActive(true);
@@ -80,6 +90,7 @@ public class DialogueHandler : MonoBehaviour
             dialogueText.text = "";
             isTyping = true;
             this.charSpeed = charSpeed;
+            timeAfterDialogue = 2f;
             timer = 0f;
             stayActive = stay;
             gameObject.SetActive(true);

@@ -19,11 +19,20 @@ public class DyingCharacterSceneHandler : MonoBehaviour
     private float timer = 0f;
     private float zoomSpeed = 0.5f;
     private float prevSize;
+
+    private bool stopSequence = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         dialogueHandler = dialogueUI.GetComponent<DialogueHandler>();
-        gameManager = manager.GetComponent<GameManager>();
+        if(dialogueHandler == null)
+        {
+            Debug.LogError("DialogueHandler component not found on dialogueUI");
+        } else
+        {
+            Debug.Log("DialogueHandler component found on dialogueUI");
+        }
+            gameManager = manager.GetComponent<GameManager>();
         timerSystem = Timer.GetComponent<TimerSystem>();
         bloodPool = GameObject.Find("ExpandingBloodPool");
         playerController = player.GetComponent<PlayerController>();
@@ -42,9 +51,31 @@ public class DyingCharacterSceneHandler : MonoBehaviour
         timer = 1f;
     }
 
+    public void StopScene()
+    {
+        stopSequence = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (stopSequence)
+        {
+            step = 0;
+            dialogueHandler.StopDialogue();
+            gameManager.StartGamePlay();
+            stopSequence = false;
+            Animator animBlood = bloodPool.GetComponent<Animator>();
+            if (animBlood != null)
+            {
+                animBlood.Play("BloodPoolEnd");
+            }
+            Animator anim = gameObject.GetComponent<Animator>();
+            if (anim != null)
+            {
+                anim.Play("DeadCharacter");
+            }
+        }
         if (step > 0)
         {
             prevSize = cam.orthographicSize;
@@ -53,7 +84,15 @@ public class DyingCharacterSceneHandler : MonoBehaviour
             if (step == 1)
             {
                 Animator animBlood = bloodPool.GetComponent<Animator>();
-                animBlood.Play("ExpandingBloodPool");
+                if (animBlood != null)
+                {
+                    animBlood.Play("ExpandingBloodPool");
+                }
+                Animator anim = gameObject.GetComponent<Animator>();
+                if (anim != null)
+                {
+                    anim.Play("DyingCharacter");
+                }
                 cam.orthographicSize = Mathf.Lerp(
                     prevSize,
                     targetSize,
@@ -74,7 +113,7 @@ public class DyingCharacterSceneHandler : MonoBehaviour
                     {
                         bloodPoolManager.StartBloodPool();
                     }
-                    dialogueHandler.StartDialogue(spritePlayer, "Où suis-je ?", 0.05f, true);
+                    dialogueHandler.StartDialogue(spritePlayer, "Où suis-je?", 0.05f, true);
                 }
             }
             else if (step == 3)
@@ -82,7 +121,7 @@ public class DyingCharacterSceneHandler : MonoBehaviour
                 if (dialogueHandler.IsDone())
                 {
                     step = 4;
-                    dialogueHandler.StartDialogue(spriteDyingCharacter, "Tu ne te rappelle pas ?", 0.03f, true);
+                    dialogueHandler.StartDialogue(spriteDyingCharacter, "Tu ne te rappelles pas?", 0.03f, true);
                 }
             }
             else if (step == 4)
@@ -106,7 +145,7 @@ public class DyingCharacterSceneHandler : MonoBehaviour
                 if (dialogueHandler.IsDone())
                 {
                     step = 7;
-                    dialogueHandler.StartDialogue(spritePlayer, "Comprends quoi ?", 0.03f, true);
+                    dialogueHandler.StartDialogue(spritePlayer, "Comprends quoi?", 0.03f, true);
                 }
             }
             else if (step == 7)
@@ -122,7 +161,7 @@ public class DyingCharacterSceneHandler : MonoBehaviour
                 if (dialogueHandler.IsDone())
                 {
                     step = 9;
-                    dialogueHandler.StartDialogue(spriteDyingCharacter, "Promets-moi...", 0.1f, true);
+                    dialogueHandler.StartDialogue(spriteDyingCharacter, "Promets-moi...", 0.04f, true);
                 }
             }
             else if (step == 9)
@@ -130,7 +169,7 @@ public class DyingCharacterSceneHandler : MonoBehaviour
                 if (dialogueHandler.IsDone())
                 {
                     step = 10;
-                    dialogueHandler.StartDialogue(spriteDyingCharacter, "Que quand tu comprendras...", 0.1f, true);
+                    dialogueHandler.StartDialogue(spriteDyingCharacter, "Que quand tu comprendras...", 0.04f, true);
                 }
             }
             else if (step == 10)
@@ -138,7 +177,7 @@ public class DyingCharacterSceneHandler : MonoBehaviour
                 if (dialogueHandler.IsDone())
                 {
                     step = 11;
-                    dialogueHandler.StartDialogue(spriteDyingCharacter, "Tu vas me rejoindre...", 0.1f, 3f, true);
+                    dialogueHandler.StartDialogue(spriteDyingCharacter, "Tu vas me rejoindre.", 0.1f, 3f, true);
                     Animator anim = gameObject.GetComponent<Animator>();
                     anim.Play("DeadCharacter");
                     Animator animBlood = bloodPool.GetComponent<Animator>();
@@ -150,7 +189,7 @@ public class DyingCharacterSceneHandler : MonoBehaviour
                 if (dialogueHandler.IsDone())
                 {
                     step = 12;
-                    dialogueHandler.StartDialogue(spritePlayer, "Tu veux dire mourrir ?", 0.1f, true);
+                    dialogueHandler.StartDialogue(spritePlayer, "Tu veux dire mourrir?", 0.1f, true);
                 }
             }
             else if (step == 12)
@@ -166,7 +205,7 @@ public class DyingCharacterSceneHandler : MonoBehaviour
                 if (dialogueHandler.IsDone())
                 {
                     step = 14;
-                    dialogueHandler.StartDialogue(spritePlayer, "Il est mort...", 0.1f, 1f);
+                    dialogueHandler.StartDialogue(spritePlayer, "Il est mort.", 0.1f, 1f);
                     timer = 1f;
                 }
             }
@@ -178,19 +217,7 @@ public class DyingCharacterSceneHandler : MonoBehaviour
                 }
             } else if (step == 15)
             {
-                cam.orthographicSize = Mathf.Lerp(
-                    targetSize,
-                    prevSize,
-                    (1 - timer) * 0.5f
-                );
-
-                if (timer <= 0f)
-                {
-                    Debug.Log("Dying sequence ended, starting gameplay...");
-                    step = 0;
-                    gameManager.StartGamePlay();
-                    //end of sequence, you can add any additional logic here
-                }
+                gameManager.StartGamePlay();
             }
         }
     }
