@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class RepairMachine : MonoBehaviour
@@ -23,6 +24,16 @@ public class RepairMachine : MonoBehaviour
     public AudioClip finalActivationSound;
     private AudioSource audioSource;
 
+    [Header("Lights")]
+    public Light2D coreLight;
+    public Light2D stickLLight;
+    public Light2D stickRLight;
+    public Light2D screenLight;
+    public Light2D smallLight;
+    public Light2D fullLight;
+    public Color initialColor = Color.yellow;
+    public Color finalColor = Color.cyan;
+
     private SpriteRenderer sr;
     private bool playerInRange = false;
     private PlayerController player;
@@ -30,15 +41,26 @@ public class RepairMachine : MonoBehaviour
 
     private bool coreInstalled = false;
     private bool stickInstalled = false;
-    private bool thirdInstalled = false;
+    private bool thirdInstalled = true;
 
     void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
     audioSource.spatialBlend = 0f;
         sr = GetComponent<SpriteRenderer>();
-        if (state0 != null) sr.sprite = state0;
-
+        if(state0 != null) sr.sprite = state0;
+        smallLight.enabled = false;
+        smallLight.color = initialColor;
+        stickLLight.enabled = true;
+        stickLLight.color = initialColor;
+        stickRLight.enabled = false;
+        stickRLight.color = initialColor;
+        coreLight.enabled = false;
+        coreLight.color = initialColor;
+        screenLight.enabled = false;
+        screenLight.color = initialColor;
+        fullLight.enabled = false;
+        fullLight.color = initialColor;
         Sprite s = Sprite.Create(
             buttonTexture,
             new Rect(0, 0, buttonTexture.width, buttonTexture.height),
@@ -109,6 +131,9 @@ public class RepairMachine : MonoBehaviour
         coreInstalled = true;
         ApplyHPBonus();
         if (state1 != null) sr.sprite = state1;
+        if (coreLight != null) coreLight.enabled = true;
+        if (screenLight != null) screenLight.enabled = true;
+        if (smallLight != null) smallLight.enabled = true;
         CameraFollow.instance?.TriggerShake(0.4f, 0.2f);
         MemoryManager.instance?.OnRepair(1);
         Debug.Log("[Machine] Core installé — Réparation 1");
@@ -121,6 +146,7 @@ public class RepairMachine : MonoBehaviour
         stickInstalled = true;
         ApplyHPBonus();
         if (state2 != null) sr.sprite = state2;
+        if (stickRLight != null) stickRLight.enabled = true;
         CameraFollow.instance?.TriggerShake(0.4f, 0.2f);
         MemoryManager.instance?.OnRepair(2);
         Debug.Log("[Machine] Barre installée — Réparation 2");
@@ -132,6 +158,14 @@ public class RepairMachine : MonoBehaviour
         thirdInstalled = true;
         ApplyHPBonus();
         if (state3 != null) sr.sprite = state3;
+        fullLight.enabled = true;
+        fullLight.color = new Color(1f, 0.8f, 0.6f);
+        screenLight.color = finalColor;
+        stickLLight.color = finalColor;
+        stickRLight.color = finalColor;
+        coreLight.color = finalColor;
+        smallLight.color = finalColor;
+
         CameraFollow.instance?.TriggerShake(0.6f, 0.3f);
         MemoryManager.instance?.OnRepair(3);
         Debug.Log("[Machine] Électricité rétablie — Machine complète");
