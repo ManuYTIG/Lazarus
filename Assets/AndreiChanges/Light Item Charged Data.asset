@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e077458d81cd0419ad6668f73bac19, type: 3}
+  m_Name: Light Item Charged Data
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  ID: light_item_charged
+  Name: Light Item Charged
+  Description: 
+  Icon: {fileID: 4094443742416168287, guid: ffe8525c6056d3447a2623442f969b9c, type: 3}
+  Prefab: {fileID: 4481673504391578804, guid: 470d6b065ce0a344c96b666b362e9a11, type: 3}
+  AdditionalPrefab: {fileID: 0}
