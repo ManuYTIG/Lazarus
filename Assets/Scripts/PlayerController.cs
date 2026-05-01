@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private bool isFacingRight = true;
     public InventorySystem inventorySystem; // Reference to the player's inventory system
     public Health health;
+    public AudioSource shootSound;
 
 
     void Start()
@@ -54,7 +55,9 @@ public class PlayerController : MonoBehaviour
                     Physics2D.IgnoreCollision(b.GetComponent<Collider2D>(), GetComponent<Collider2D>());
                     b.GetComponent<Rigidbody2D>().linearVelocity = clickDir* 20f; // Example velocity for the bullet
                     Debug.Log($"Fired plasma bullet with {b.GetComponent<Rigidbody2D>().linearVelocity} velocity");
+                    shootSound.PlayOneShot(shootSound.clip);
                 }
+
                 if (item.ID == "light_item")
 {
     Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
