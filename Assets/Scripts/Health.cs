@@ -6,7 +6,7 @@ public class Health : MonoBehaviour
 {
     public float health;
     public float maxHealth;
-    public SpriteRenderer spriteRenderer;
+    public SpriteRenderer bodySprite;
     public GameObject healthBarPrefab;
     private Image fillImage;
     private Transform healthBar;
@@ -64,9 +64,9 @@ public class Health : MonoBehaviour
     private IEnumerator DamageFlash()
     {
         Color original = Color.white;
-        spriteRenderer.color = new Color(1f, 0f, 0f, 0.5f);
+        bodySprite.color = new Color(1f, 0f, 0f, 0.5f);
         yield return new WaitForSeconds(0.1f);
-        spriteRenderer.color = original;
+        bodySprite.color = original;
     }
 }
 

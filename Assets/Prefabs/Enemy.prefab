@@ -121,7 +121,7 @@ Transform:
   m_GameObject: {fileID: 9047786232689654642}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.64442, y: -2.8, z: 0}
+  m_LocalPosition: {x: 27.71, y: -1.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health
   health: 0
   maxHealth: 3
-  spriteRenderer: {fileID: 8939989793359312066}
+  bodySprite: {fileID: 8939989793359312066}
   healthBarPrefab: {fileID: 2449947681089070658, guid: 51cc79e695630ea48876d68b89e8a3d9, type: 3}
 --- !u!114 &7044412428354521606
 MonoBehaviour:
