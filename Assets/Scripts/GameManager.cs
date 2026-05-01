@@ -99,9 +99,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("Starting gameplay");
         inGameUI.SetActive(true);
         zoomHandle.enabled = true;
-        movement.enabled = true;
-        if (anim != null)
+        if(anim != null)
             anim.enabled = false;
+        movement.enabled = true;
         if (timerSystem != null)
         {
             timerSystem.enabled = true;
