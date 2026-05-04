@@ -92,18 +92,25 @@ public class GameManager : MonoBehaviour
 
     public void OnSpawnFinished()
     {
+        timerSystem.enabled = true;
+        timerSystem.Pause();
         if (numRespawns == 0)
         {
+            timerSystem.ResetTimer(timerSystem.startTime);
             skipSceneObject.SetActive(true);
             currentSceneIndex = 0;
             Debug.Log("First respawn");
             zoomHandle.enabled = false;
             dyingCharacterSceneHandler.StartDyingSequence();
         }
-        else if (movement != null)
+        else 
         {
-            Debug.Log("Random respawn");
-            StartGamePlay();
+            timerSystem.ResetTimer(timerSystem.startTime);
+            if (movement != null)
+            {
+                Debug.Log("Random respawn");
+                StartGamePlay();
+            }
         }
 
 
@@ -122,8 +129,7 @@ public class GameManager : MonoBehaviour
         movement.enabled = true;
         if (timerSystem != null)
         {
-            timerSystem.enabled = true;
-            timerSystem.ResetTimer();
+            timerSystem.StartTimer();
         }
     }
 }

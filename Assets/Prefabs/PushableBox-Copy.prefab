@@ -178,4 +178,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f7707526fb85ac448d06870b76e8e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BreakableBox
-  itemToSpawn: {fileID: 4726831608935285560, guid: 6bcae377be09fd243af3702c4300bd73, type: 3}
+  itemToSpawn: {fileID: 0}
+  particlePrefab: {fileID: 0}
+  health: 0
+  damagedSprites: []
+  particleLife: 0
+  recoilForce: 0
+  wobbleScale: 0.9
+  wobbleTime: 0.1
+  damageCooldown: 0.2

@@ -266,7 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health
   health: 0
   maxHealth: 3
-  spriteRenderer: {fileID: 603277775713411718}
+  bodySprite: {fileID: 603277775713411718}
   healthBarPrefab: {fileID: 2449947681089070658, guid: 51cc79e695630ea48876d68b89e8a3d9, type: 3}
 --- !u!114 &1176492193068665325
 MonoBehaviour:

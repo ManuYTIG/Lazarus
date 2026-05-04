@@ -49,10 +49,13 @@ public class PlayerRespawn : MonoBehaviour
         if (rb != null) rb.simulated = false;
         if (boxCollider != null) boxCollider.enabled = false;
         if (animator != null) animator.enabled = false;
-        if (timerSystem != null) timerSystem.enabled = false;
+        if (timerSystem != null)
+        {
+            timerSystem.Pause();
+            timerSystem.enabled = false;
+        }
         foreach (SpriteRenderer sr in spriteRenderers)
             sr.enabled = false;
-
         Invoke("Respawn", 1.5f);
     }
 
