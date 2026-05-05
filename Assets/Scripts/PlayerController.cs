@@ -4,6 +4,8 @@ public class PlayerController : MonoBehaviour
 {
     public BreakableBox box; // Reference to the breakable box that the player can interact with
     public GameObject bullet; // Reference to the bullet prefab for the plasma pistol
+    public AudioClip pistolShoot;
+    public AudioSource playerSource;
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -54,6 +56,10 @@ public class PlayerController : MonoBehaviour
                     Physics2D.IgnoreCollision(b.GetComponent<Collider2D>(), GetComponent<Collider2D>());
                     b.GetComponent<Rigidbody2D>().linearVelocity = clickDir* 20f; // Example velocity for the bullet
                     Debug.Log($"Fired plasma bullet with {b.GetComponent<Rigidbody2D>().linearVelocity} velocity");
+
+                    // Play pistol shoot sound
+                    if (playerSource != null && pistolShoot != null)
+                        playerSource.PlayOneShot(pistolShoot);
                 }
                 if (item.ID == "light_item" || item.ID == "light_item_charged")
                 {

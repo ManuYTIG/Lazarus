@@ -10,6 +10,7 @@ public class DyingCharacterSceneHandler : MonoBehaviour
     public GameObject Timer;
     public GameObject manager;
     public AudioClip audioPlayer;
+    public AudioClip audioDyingCharacter;
     private GameManager gameManager;
     private TimerSystem timerSystem;
     private DialogueHandler dialogueHandler;
@@ -122,7 +123,7 @@ public class DyingCharacterSceneHandler : MonoBehaviour
                 if (dialogueHandler.IsDone())
                 {
                     step = 4;
-                    dialogueHandler.StartDialogue(spriteDyingCharacter, "Tu ne te rappelles pas?", 0.03f, true);
+                    dialogueHandler.StartDialogue(spriteDyingCharacter, "Tu ne te rappelles pas?", 0.03f, true, audioDyingCharacter, 0.05f);
                 }
             }
             else if (step == 4)
@@ -138,7 +139,7 @@ public class DyingCharacterSceneHandler : MonoBehaviour
                 if (dialogueHandler.IsDone())
                 {
                     step = 6;
-                    dialogueHandler.StartDialogue(spriteDyingCharacter, "Pas besoin de répondre. Je comprends.", 0.03f, true);
+                    dialogueHandler.StartDialogue(spriteDyingCharacter, "Pas besoin de répondre. Je comprends.", 0.03f, true, audioDyingCharacter, 0.05f);
                 }
             }
             else if (step == 6)
@@ -146,7 +147,7 @@ public class DyingCharacterSceneHandler : MonoBehaviour
                 if (dialogueHandler.IsDone())
                 {
                     step = 7;
-                    dialogueHandler.StartDialogue(spritePlayer, "Comprends quoi?", 0.03f, true);
+                    dialogueHandler.StartDialogue(spritePlayer, "Comprends quoi?", 0.03f, true, audioPlayer, 0.05f);
                 }
             }
             else if (step == 7)
@@ -154,7 +155,7 @@ public class DyingCharacterSceneHandler : MonoBehaviour
                 if (dialogueHandler.IsDone())
                 {
                     step = 8;
-                    dialogueHandler.StartDialogue(spriteDyingCharacter, "Tu vas le comprendre plus tard...", 0.03f, 3f, true);
+                    dialogueHandler.StartDialogue(spriteDyingCharacter, "Tu vas le comprendre plus tard...", 0.03f, 3f, true, audioDyingCharacter, 0.05f);
                 }
             }
             else if (step == 8)
@@ -162,7 +163,7 @@ public class DyingCharacterSceneHandler : MonoBehaviour
                 if (dialogueHandler.IsDone())
                 {
                     step = 9;
-                    dialogueHandler.StartDialogue(spriteDyingCharacter, "Promets-moi...", 0.04f, true);
+                    dialogueHandler.StartDialogue(spriteDyingCharacter, "Promets-moi...", 0.04f, true, audioDyingCharacter, 0.06f);
                 }
             }
             else if (step == 9)
@@ -170,7 +171,7 @@ public class DyingCharacterSceneHandler : MonoBehaviour
                 if (dialogueHandler.IsDone())
                 {
                     step = 10;
-                    dialogueHandler.StartDialogue(spriteDyingCharacter, "Que quand tu comprendras...", 0.04f, true);
+                    dialogueHandler.StartDialogue(spriteDyingCharacter, "Que quand tu comprendras...", 0.04f, true, audioDyingCharacter, 0.06f);
                 }
             }
             else if (step == 10)
@@ -178,7 +179,7 @@ public class DyingCharacterSceneHandler : MonoBehaviour
                 if (dialogueHandler.IsDone())
                 {
                     step = 11;
-                    dialogueHandler.StartDialogue(spriteDyingCharacter, "Tu vas me rejoindre.", 0.1f, 3f, true);
+                    dialogueHandler.StartDialogue(spriteDyingCharacter, "Tu vas me rejoindre.", 0.1f, 3f, true, audioDyingCharacter, 0.09f);
                     Animator anim = gameObject.GetComponent<Animator>();
                     anim.Play("DeadCharacter");
                     Animator animBlood = bloodPool.GetComponent<Animator>();
@@ -190,7 +191,7 @@ public class DyingCharacterSceneHandler : MonoBehaviour
                 if (dialogueHandler.IsDone())
                 {
                     step = 12;
-                    dialogueHandler.StartDialogue(spritePlayer, "Tu veux dire mourrir?", 0.1f, true);
+                    dialogueHandler.StartDialogue(spritePlayer, "Tu veux dire mourrir?", 0.1f, true, audioPlayer, 0.09f);
                 }
             }
             else if (step == 12)
@@ -206,7 +207,7 @@ public class DyingCharacterSceneHandler : MonoBehaviour
                 if (dialogueHandler.IsDone())
                 {
                     step = 14;
-                    dialogueHandler.StartDialogue(spritePlayer, "Il est mort.", 0.1f, 1f);
+                    dialogueHandler.StartDialogue(spritePlayer, "Il est mort.", 0.1f, 1f, false, audioPlayer, 0.09f);
                     timer = 1f;
                 }
             }

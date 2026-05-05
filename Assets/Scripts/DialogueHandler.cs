@@ -18,6 +18,7 @@ public class DialogueHandler : MonoBehaviour
     private bool isTyping;
     private float timeAfterDialogue = 2f;
     private bool stayActive = false;
+    private bool stopDialogue = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -202,11 +203,16 @@ public class DialogueHandler : MonoBehaviour
                 }
                 else
                 {
+                    if(!stopDialogue)
+                    {
+                        stopDialogue = true;
+                        Debug.Log("Stopping Dialogue");
+                        dialogueSoundScript.StopDialogueSound();
+                    }
                     if(timer > timeAfterDialogue)
                     {
-                        Debug.Log("Stopping Dialogue");
+                        stopDialogue = false;
                         dialogueText.text = "";
-                        dialogueSoundScript.StopDialogueSound();
                         timer = 0f;
                         isTyping = false;
                         if(!stayActive) gameObject.SetActive(false);
