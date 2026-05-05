@@ -6,8 +6,12 @@ public class DialogueHandler : MonoBehaviour
 {
     public GameObject TextDialogue;
     public GameObject CharacterImage;
+    public GameObject sourceObject;
     private Image dialogueCharacterImg;
+    private AudioClip audio;
+    private float speedAudio = 0.5f;
     private TextMeshProUGUI dialogueText;
+    private DialogueSoundScript dialogueSoundScript;
     private float charSpeed = 0.05f;
     private string fullText;
     private float timer;
@@ -20,6 +24,7 @@ public class DialogueHandler : MonoBehaviour
         //find necessary components
         dialogueText = TextDialogue.GetComponent<TextMeshProUGUI>();
         dialogueCharacterImg = CharacterImage.GetComponent<Image>();
+        dialogueSoundScript = sourceObject.GetComponent<DialogueSoundScript>();
         gameObject.SetActive(false);
     }
 
@@ -47,6 +52,7 @@ public class DialogueHandler : MonoBehaviour
             this.charSpeed = charSpeed;
             timeAfterDialogue = 2f;
             timer = 0f;
+            audio = null;
             stayActive = false;
             gameObject.SetActive(true);
         }
@@ -66,6 +72,7 @@ public class DialogueHandler : MonoBehaviour
             dialogueCharacterImg.sprite = characterSprite;
             fullText = dialogue;
             timeAfterDialogue = timerAfter;
+            audio = null;
             dialogueText.text = "";
             isTyping = true;
             this.charSpeed = charSpeed;
@@ -86,6 +93,7 @@ public class DialogueHandler : MonoBehaviour
         {
             Debug.Log($"Starting dialogue for text: {dialogue}");
             dialogueCharacterImg.sprite = characterSprite;
+            audio = null;
             fullText = dialogue;
             dialogueText.text = "";
             isTyping = true;
@@ -109,6 +117,58 @@ public class DialogueHandler : MonoBehaviour
         {
             Debug.Log($"Starting dialogue for text: {dialogue}");
             dialogueCharacterImg.sprite = characterSprite;
+            audio = null;
+            fullText = dialogue;
+            timeAfterDialogue = timerAfter;
+            dialogueText.text = "";
+            isTyping = true;
+            this.charSpeed = charSpeed;
+            timer = 0f;
+            stayActive = stay;
+            gameObject.SetActive(true);
+        }
+    }
+
+    public void StartDialogue(Sprite characterSprite, string dialogue, float charSpeed, bool stay, AudioClip audioDialogue, float audioSpeed)
+    {
+        if (isTyping)
+        {
+            Debug.Log("Already typing, ignoring new dialogue");
+            return;
+        }
+        else
+        {
+            Debug.Log($"Starting dialogue for text: {dialogue}");
+            dialogueCharacterImg.sprite = characterSprite;
+            audio = audioDialogue;
+            speedAudio = audioSpeed;
+            dialogueSoundScript.PlayDialogueSound(audioDialogue, audioSpeed);
+            fullText = dialogue;
+            dialogueText.text = "";
+            isTyping = true;
+            this.charSpeed = charSpeed;
+            timeAfterDialogue = 2f;
+            timer = 0f;
+            stayActive = stay;
+            gameObject.SetActive(true);
+        }
+
+    }
+
+    public void StartDialogue(Sprite characterSprite, string dialogue, float charSpeed, float timerAfter, bool stay, AudioClip audioDialogue, float audioSpeed)
+    {
+        if (isTyping)
+        {
+            Debug.Log("Already typing, ignoring new dialogue");
+            return;
+        }
+        else
+        {
+            Debug.Log($"Starting dialogue for text: {dialogue}");
+            dialogueCharacterImg.sprite = characterSprite;
+            audio = audioDialogue;
+            speedAudio = audioSpeed;
+            dialogueSoundScript.PlayDialogueSound(audioDialogue, audioSpeed);
             fullText = dialogue;
             timeAfterDialogue = timerAfter;
             dialogueText.text = "";
@@ -131,10 +191,12 @@ public class DialogueHandler : MonoBehaviour
         if(isTyping)
         {
             timer += Time.deltaTime;
-            if(timer >= charSpeed)
+            Debug.Log("r");
+            if (timer >= charSpeed)
             {
-                if(dialogueText.text.Length < fullText.Length)
+                if (dialogueText.text.Length < fullText.Length)
                 {
+                    Debug.Log($"at {dialogueText.text.Length}");
                     dialogueText.text += fullText[dialogueText.text.Length];
                     timer = 0f;
                 }
@@ -142,12 +204,16 @@ public class DialogueHandler : MonoBehaviour
                 {
                     if(timer > timeAfterDialogue)
                     {
+                        Debug.Log("Stopping Dialogue");
+                        dialogueText.text = "";
+                        dialogueSoundScript.StopDialogueSound();
                         timer = 0f;
                         isTyping = false;
                         if(!stayActive) gameObject.SetActive(false);
                     }
                 }
             }
+            Debug.Log("s");
         }
     }
 }

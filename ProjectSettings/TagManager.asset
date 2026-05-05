@@ -62,6 +62,9 @@ TagManager:
   - name: Inside Walls
     uniqueID: 1562774131
     locked: 0
+  - name: SideWalls
+    uniqueID: 2200620881
+    locked: 0
   - name: Walls
     uniqueID: 4200189429
     locked: 0

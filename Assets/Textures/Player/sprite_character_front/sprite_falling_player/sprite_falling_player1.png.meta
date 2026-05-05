@@ -1,0 +1,455 @@
+fileFormatVersion: 2
+guid: 6f697afb434607447ac1d1e9c051ab75
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8092099501722062983
+    second: sprite_falling_player1_0
+  - first:
+      213: 8570240530666866278
+    second: sprite_falling_player1_1
+  - first:
+      213: -5455188964599260889
+    second: sprite_falling_player1_2
+  - first:
+      213: 7335583504325713545
+    second: sprite_falling_player1_3
+  - first:
+      213: 4178407169535618648
+    second: sprite_falling_player1_4
+  - first:
+      213: -5670802183834949072
+    second: sprite_falling_player1_5
+  - first:
+      213: -77781595547078287
+    second: sprite_falling_player1_6
+  - first:
+      213: 8730971119125457796
+    second: sprite_falling_player1_7
+  - first:
+      213: -7453681144997022341
+    second: sprite_falling_player1_8
+  - first:
+      213: 2980152891863548849
+    second: sprite_falling_player1_9
+  - first:
+      213: 5904262354514979646
+    second: sprite_falling_player1_10
+  - first:
+      213: -9002541654419333270
+    second: sprite_falling_player1_11
+  - first:
+      213: 1080724852792913181
+    second: sprite_falling_player1_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sprite_falling_player1_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 229
+        width: 12
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 780524f7f99ec4070800000000000000
+      internalID: 8092099501722062983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_falling_player1_1
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 59
+        width: 192
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 666cd060b5c9fe670800000000000000
+      internalID: 8570240530666866278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_falling_player1_2
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 239
+        width: 32
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7291e6e1a864b44b0800000000000000
+      internalID: -5455188964599260889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_falling_player1_3
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 269
+        width: 12
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98e9c83e45a3dc560800000000000000
+      internalID: 7335583504325713545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_falling_player1_4
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 189
+        width: 22
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85ead1bbe2facf930800000000000000
+      internalID: 4178407169535618648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_falling_player1_5
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 89
+        width: 12
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03a220185734d41b0800000000000000
+      internalID: -5670802183834949072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_falling_player1_6
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 139
+        width: 12
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1717a5b0d0aabeef0800000000000000
+      internalID: -77781595547078287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_falling_player1_7
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 129
+        width: 22
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48beaa369f3aa2970800000000000000
+      internalID: 8730971119125457796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_falling_player1_8
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 29
+        width: 12
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b75fc6b6d743f8890800000000000000
+      internalID: -7453681144997022341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_falling_player1_9
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 29
+        width: 12
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b341eff341ab5920800000000000000
+      internalID: 2980152891863548849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_falling_player1_10
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 29
+        width: 12
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3ba39d445720f150800000000000000
+      internalID: 5904262354514979646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_falling_player1_11
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 59
+        width: 22
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6f9da4101c801380800000000000000
+      internalID: -9002541654419333270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_falling_player1_12
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 19
+        width: 12
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1d68a617818ffe00800000000000000
+      internalID: 1080724852792913181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sprite_falling_player1_0: 8092099501722062983
+      sprite_falling_player1_1: 8570240530666866278
+      sprite_falling_player1_10: 5904262354514979646
+      sprite_falling_player1_11: -9002541654419333270
+      sprite_falling_player1_12: 1080724852792913181
+      sprite_falling_player1_2: -5455188964599260889
+      sprite_falling_player1_3: 7335583504325713545
+      sprite_falling_player1_4: 4178407169535618648
+      sprite_falling_player1_5: -5670802183834949072
+      sprite_falling_player1_6: -77781595547078287
+      sprite_falling_player1_7: 8730971119125457796
+      sprite_falling_player1_8: -7453681144997022341
+      sprite_falling_player1_9: 2980152891863548849
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

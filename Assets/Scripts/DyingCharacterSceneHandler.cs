@@ -9,6 +9,7 @@ public class DyingCharacterSceneHandler : MonoBehaviour
     public Sprite spriteDyingCharacter;
     public GameObject Timer;
     public GameObject manager;
+    public AudioClip audioPlayer;
     private GameManager gameManager;
     private TimerSystem timerSystem;
     private DialogueHandler dialogueHandler;
@@ -113,7 +114,7 @@ public class DyingCharacterSceneHandler : MonoBehaviour
                     {
                         bloodPoolManager.StartBloodPool();
                     }
-                    dialogueHandler.StartDialogue(spritePlayer, "Où suis-je?", 0.05f, true);
+                    dialogueHandler.StartDialogue(spritePlayer, "Où suis-je?", 0.05f, true, audioPlayer, 0.05f);
                 }
             }
             else if (step == 3)
