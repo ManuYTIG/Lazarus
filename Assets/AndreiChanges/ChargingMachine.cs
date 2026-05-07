@@ -5,7 +5,7 @@ using System.Collections;
 public class ChargingMachine : MonoBehaviour
 {
     [Header("Charged Item")]
-    public ItemData chargedLightItem; // ItemData de la barre illuminée
+    public ItemData chargedLightItem;
 
     [Header("Charge Settings")]
     public float chargeDuration = 5f;
@@ -21,7 +21,7 @@ public class ChargingMachine : MonoBehaviour
     private Transform keyInstance;
 
     [Header("Screen Flash")]
-    public GameObject flashOverlayPrefab; // un Panel UI jaune qu'on va créer
+    public Image flashImage;
 
     private bool playerInRange = false;
     private PlayerController player;
@@ -75,7 +75,7 @@ public class ChargingMachine : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             ItemData item = inventory.Getitem();
-            if (item != null && item.ID == "light_item")
+            if (item != null && (item.ID == "light_item" || item.ID == "light_item_charged"))
                 StartCoroutine(ChargeRoutine(item));
         }
     }
@@ -83,66 +83,47 @@ public class ChargingMachine : MonoBehaviour
     private IEnumerator ChargeRoutine(ItemData item)
     {
         isCharging = true;
-
-        // Désactive le joueur
         player.enabled = false;
-
-        // Consomme la barre
         inventory.ConsumeItem(item);
 
-        // Son
         if (chargeSound != null)
             audioSource.PlayOneShot(chargeSound, 0.5f);
 
-        // Flash jaune
-        GameObject flash = null;
-        if (flashOverlayPrefab != null)
-        {
-            flash = Instantiate(flashOverlayPrefab);
-            StartCoroutine(FlashRoutine(flash, chargeDuration));
-        }
-
-        // Camera shake pendant le chargement
         CameraFollow.instance?.TriggerShake(chargeDuration, 0.15f);
+        StartCoroutine(FlashRoutine(chargeDuration));
 
         yield return new WaitForSeconds(chargeDuration);
 
-        // Redonne la barre chargée
         if (chargedLightItem != null)
             inventory.AddItem(chargedLightItem);
 
-        // Réactive le joueur
         player.enabled = true;
-
-        if (flash != null)
-            Destroy(flash);
-
         isCharging = false;
     }
 
-    private IEnumerator FlashRoutine(GameObject flash, float duration)
+    private IEnumerator FlashRoutine(float duration)
     {
-        Image img = flash.GetComponentInChildren<Image>();
-        if (img == null) yield break;
+        Debug.Log($"FlashRoutine started, flashImage: {(flashImage != null ? flashImage.name : "NULL")}");
+        if (flashImage == null) yield break;
 
         float half = duration / 2f;
-
-        // Fade in
         float t = 0f;
+
         while (t < half)
         {
             t += Time.deltaTime;
-            img.color = new Color(1f, 0.9f, 0f, Mathf.Lerp(0f, 0.6f, t / half));
+            flashImage.color = new Color(1f, 0.9f, 0f, Mathf.Lerp(0f, 0.6f, t / half));
             yield return null;
         }
 
-        // Fade out
         t = 0f;
         while (t < half)
         {
             t += Time.deltaTime;
-            img.color = new Color(1f, 0.9f, 0f, Mathf.Lerp(0.6f, 0f, t / half));
+            flashImage.color = new Color(1f, 0.9f, 0f, Mathf.Lerp(0.6f, 0f, t / half));
             yield return null;
         }
+
+        flashImage.color = new Color(1f, 0.9f, 0f, 0f);
     }
 }

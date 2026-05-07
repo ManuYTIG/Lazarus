@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 518782116193111204}
   - component: {fileID: 4678001334354738649}
   m_Layer: 5
-  m_Name: BrightLight
+  m_Name: FlashOverlayPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.9302312, b: 0, a: 0.392}
+  m_Color: {r: 1, g: 0.9302312, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

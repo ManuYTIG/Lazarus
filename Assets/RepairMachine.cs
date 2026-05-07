@@ -119,7 +119,7 @@ public class RepairMachine : MonoBehaviour
 
             if (item.ID == "core_item" && !coreInstalled)
                 InstallCore(item);
-            else if (item.ID == "light_item" && !stickInstalled && coreInstalled)
+            else if (item.ID == "light_item_charged" && !stickInstalled && coreInstalled)
                 InstallStick(item);
         }
     }
