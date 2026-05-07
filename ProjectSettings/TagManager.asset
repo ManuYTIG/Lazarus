@@ -13,6 +13,7 @@ TagManager:
   - Boss
   - Larva Egg
   - Holder
+  - DroppedItem
   layers:
   - Default
   - TransparentFX
@@ -58,6 +59,12 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Secondary Inside Walls
+    uniqueID: 3838086845
+    locked: 0
+  - name: Secondary Walls
+    uniqueID: 4194978579
     locked: 0
   - name: Inside Walls
     uniqueID: 1562774131

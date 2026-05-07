@@ -11,7 +11,9 @@ public class GameManager : MonoBehaviour
     public GameObject Timer;
     public Camera cam;
     public GameObject skipSceneObject;
+    public bool skippedScene = false;
     private ZoomHandler zoomHandle;
+    private CameraFollow camFollow;
     private TimerSystem timerSystem;
     private PlayerRespawn playerRespawn;
     private bool startedGame;
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         zoomHandle = cam.GetComponent<ZoomHandler>();
+        camFollow = cam.GetComponent<CameraFollow>();
         playerRespawn = player.GetComponent<PlayerRespawn>();
         timerSystem = Timer.GetComponent<TimerSystem>();
         dyingCharacterSceneHandler = dyingCharacter.GetComponent<DyingCharacterSceneHandler>(); 
@@ -42,10 +45,12 @@ public class GameManager : MonoBehaviour
 
     public void SkipScene()
     {
+        skippedScene = true;
         if (currentSceneIndex == 0)
         {
             Debug.Log("Skipping first scene");
             dyingCharacterSceneHandler.StopScene();
+            skippedScene = false;
         }
 
         skipSceneObject.SetActive(false);
@@ -103,7 +108,7 @@ public class GameManager : MonoBehaviour
             zoomHandle.enabled = false;
             dyingCharacterSceneHandler.StartDyingSequence();
         }
-        else 
+        else
         {
             timerSystem.ResetTimer(timerSystem.startTime);
             if (movement != null)

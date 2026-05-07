@@ -92,5 +92,4 @@ public class Enemy2 : MonoBehaviour
 
         cam.transform.localPosition = originalPos;
     }
-
 }

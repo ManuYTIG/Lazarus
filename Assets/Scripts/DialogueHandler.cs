@@ -192,12 +192,10 @@ public class DialogueHandler : MonoBehaviour
         if(isTyping)
         {
             timer += Time.deltaTime;
-            Debug.Log("r");
             if (timer >= charSpeed)
             {
                 if (dialogueText.text.Length < fullText.Length)
                 {
-                    Debug.Log($"at {dialogueText.text.Length}");
                     dialogueText.text += fullText[dialogueText.text.Length];
                     timer = 0f;
                 }

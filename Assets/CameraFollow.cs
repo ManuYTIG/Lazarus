@@ -8,6 +8,7 @@ public class CameraFollow : MonoBehaviour
 
     private float shakeDuration = 0f;
     private float shakeMagnitude = 0.2f;
+    private static float shakeSpeed = 5f;
 
     public static CameraFollow instance;
 
@@ -29,16 +30,28 @@ public class CameraFollow : MonoBehaviour
 
         if (shakeDuration > 0)
         {
-            smoothedPosition += (Vector3)Random.insideUnitCircle * shakeMagnitude;
+            smoothedPosition += (Vector3)(new Vector3(Mathf.PerlinNoise(Time.time * shakeSpeed, 0) * 2 - 1, Mathf.PerlinNoise(0, Time.time * shakeSpeed) * 2 - 1, 0) * shakeMagnitude * 0.1f);
             shakeDuration -= Time.deltaTime;
         }
 
         transform.position = smoothedPosition;
     }
 
-    public void TriggerShake(float duration, float magnitude)
+    public void TriggerShake(float duration, float magnitude = 0.5f)
     {
         shakeDuration = duration;
         shakeMagnitude = magnitude;
+    }
+
+    public void StartIndefiniteShake(float magnitude = 0.5f)
+    {
+        shakeDuration = 1000000f;
+        shakeMagnitude = magnitude;
+    }
+
+    public void StopShake()
+    {
+        shakeDuration = 0f;
+        shakeMagnitude = 0f;
     }
 }

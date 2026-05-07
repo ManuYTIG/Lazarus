@@ -1,0 +1,191 @@
+fileFormatVersion: 2
+guid: 6f697afb434607447ac1d1e9c051ab75
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8092099501722062983
+    second: sprite_falling_player1_0
+  - first:
+      213: 8570240530666866278
+    second: sprite_falling_player1_1
+  - first:
+      213: -5455188964599260889
+    second: sprite_falling_player1_2
+  - first:
+      213: 7335583504325713545
+    second: sprite_falling_player1_3
+  - first:
+      213: 4178407169535618648
+    second: sprite_falling_player1_4
+  - first:
+      213: -5670802183834949072
+    second: sprite_falling_player1_5
+  - first:
+      213: -77781595547078287
+    second: sprite_falling_player1_6
+  - first:
+      213: 8730971119125457796
+    second: sprite_falling_player1_7
+  - first:
+      213: -7453681144997022341
+    second: sprite_falling_player1_8
+  - first:
+      213: 2980152891863548849
+    second: sprite_falling_player1_9
+  - first:
+      213: 5904262354514979646
+    second: sprite_falling_player1_10
+  - first:
+      213: -9002541654419333270
+    second: sprite_falling_player1_11
+  - first:
+      213: 1080724852792913181
+    second: sprite_falling_player1_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sprite_falling_player1_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7291e6e1a864b44b0800000000000000
+      internalID: -5455188964599260889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 852514be57d58af49bd513044169d484
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      sprite_falling_player1_0: 8092099501722062983
+      sprite_falling_player1_1: 8570240530666866278
+      sprite_falling_player1_10: 5904262354514979646
+      sprite_falling_player1_11: -9002541654419333270
+      sprite_falling_player1_12: 1080724852792913181
+      sprite_falling_player1_2: -5455188964599260889
+      sprite_falling_player1_3: 7335583504325713545
+      sprite_falling_player1_4: 4178407169535618648
+      sprite_falling_player1_5: -5670802183834949072
+      sprite_falling_player1_6: -77781595547078287
+      sprite_falling_player1_7: 8730971119125457796
+      sprite_falling_player1_8: -7453681144997022341
+      sprite_falling_player1_9: 2980152891863548849
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
