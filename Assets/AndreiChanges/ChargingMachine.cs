@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Rendering.Universal;
 
 public class ChargingMachine : MonoBehaviour
 {
@@ -23,6 +24,28 @@ public class ChargingMachine : MonoBehaviour
     [Header("Screen Flash")]
     public Image flashImage;
 
+    [Header("Sprites")]
+    public SpriteRenderer renderer;
+    public Sprite openedSprite;
+    public Sprite chargingSprite;
+    public Sprite chargedSprite;
+
+    [Header("Lights")]
+    public Light2D coreLight;
+    public Light2D cristalLight;
+    public Light2D smallLight;
+    public Light2D screenLight;
+    public Color cristalEnd;
+    public Color cristalStart;
+    public Color screenColor;
+    public Color smallGreen;
+    public Color smallCyan;
+    public float startIntensity = 0.5f;
+    public float endIntensity = 1.5f;
+    public float defaultIntensity = 1f;
+
+
+
     private bool playerInRange = false;
     private PlayerController player;
     private InventorySystem inventory;
@@ -30,6 +53,13 @@ public class ChargingMachine : MonoBehaviour
 
     void Start()
     {
+        coreLight.enabled = false;
+        cristalLight.enabled = false;
+        smallLight.enabled = true;
+        screenLight.enabled = true;
+        renderer.sprite = openedSprite;
+        smallLight.color = smallCyan;
+
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.spatialBlend = 0f;
 
@@ -85,12 +115,14 @@ public class ChargingMachine : MonoBehaviour
         isCharging = true;
         player.enabled = false;
         inventory.ConsumeItem(item);
-
+        renderer.sprite = chargingSprite;
         if (chargeSound != null)
             audioSource.PlayOneShot(chargeSound, 0.5f);
 
         CameraFollow.instance?.TriggerShake(chargeDuration, 0.15f);
         StartCoroutine(FlashRoutine(chargeDuration));
+
+        StartCoroutine(LightChargeRoutine(chargeDuration));
 
         yield return new WaitForSeconds(chargeDuration);
 
@@ -99,6 +131,7 @@ public class ChargingMachine : MonoBehaviour
 
         player.enabled = true;
         isCharging = false;
+        renderer.sprite = openedSprite;
     }
 
     private IEnumerator FlashRoutine(float duration)
@@ -126,4 +159,38 @@ public class ChargingMachine : MonoBehaviour
 
         flashImage.color = new Color(1f, 0.9f, 0f, 0f);
     }
+    private IEnumerator LightChargeRoutine(float duration)
+    {
+        float t = 0f;
+
+        // Enable lights at start
+        coreLight.enabled = true;
+        cristalLight.enabled = true;
+        cristalLight.color = cristalStart;
+        screenLight.enabled = true;
+        smallLight.enabled = true;
+        smallLight.color = smallCyan;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            float lerp = t / duration;
+
+            // Intensity
+            float intensity = Mathf.Lerp(startIntensity, endIntensity, lerp);
+            coreLight.intensity = intensity;
+            cristalLight.intensity = intensity;
+            screenLight.intensity = intensity;
+
+            yield return null;
+        }
+
+        // Clamp final values
+        coreLight.enabled = false;
+        cristalLight.enabled = false;
+        screenLight.intensity = defaultIntensity;
+        smallLight.color = smallGreen;
+        cristalLight.color = cristalEnd;
+    }
+
 }
