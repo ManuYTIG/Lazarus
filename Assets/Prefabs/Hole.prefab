@@ -4847,6 +4847,8 @@ GameObject:
   - component: {fileID: 2448588005338622759}
   - component: {fileID: 5331585967341029019}
   - component: {fileID: 62089392600527446}
+  - component: {fileID: 4995111447639435385}
+  - component: {fileID: 5056908644777839752}
   m_Layer: 0
   m_Name: Hole
   m_TagString: Untagged
@@ -4862,7 +4864,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6739903313078625103}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.5, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4979,3 +4981,56 @@ PolygonCollider2D:
       - {x: 1, y: 0.5}
       - {x: -1, y: 0.5}
   m_UseDelaunayMesh: 0
+--- !u!114 &4995111447639435385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6739903313078625103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 136fc7bf080967f4d97db1a0390b9142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Hole
+  keyPrefab: {fileID: 8847680725329592777, guid: 35c4bf8577b7c6144af9e4816dd83abf, type: 3}
+  buttonTexture: {fileID: 2800000, guid: 05986375c19410e43ad941ad55611375, type: 3}
+  renderer: {fileID: 5331585967341029019}
+  plankSprite: {fileID: 789096866876544381, guid: 4c8f6092b59d2284aae62efece041523, type: 3}
+  holeCollider: {fileID: 62089392600527446}
+--- !u!58 &5056908644777839752
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6739903313078625103}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.046175003, y: 0}
+  m_Radius: 1.4463634

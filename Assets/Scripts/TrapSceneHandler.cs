@@ -22,6 +22,8 @@ public class TrapSceneHandler : MonoBehaviour
     private float timer = 0f;
     private GameObject cloneCharacter;
     private int step = 0;
+    public Hole holeScript;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -65,26 +67,34 @@ public class TrapSceneHandler : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (!other.CompareTag("Player"))
+            return;
+
+        // if the hole is fixed, DO NOT play the cutscene
+        if (holeScript != null && holeScript.isHoleFixed)
         {
-            player.GetComponent<PlayerController>().enabled = false;
-            Debug.Log("Player entered trap trigger");
-            hole.SetActive(true);
-            gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            cloneCharacter = Instantiate(characterObject, characterObject.GetComponent<Transform>().position, characterObject.GetComponent<Transform>().rotation);
-            parentTemporaryFallInTrap.SetActive(true);
-            parentTemporaryFallInTrap.transform.position = characterObject.GetComponent<Transform>().position;
-            cloneCharacter.transform.SetParent(parentTemporaryFallInTrap.transform);
-            cloneCharacter.transform.localPosition = Vector3.zero;
-            parentTemporaryFallInTrap.GetComponent<Animator>().Play("FallInTrap");
-            cam.GetComponent<CameraFollow>().enabled = false;
-            movePlayer();
-            step = 1;
-            // Now move the player to the spawn point
-            characterObject.SetActive(false);
-            skipSceneObject.SetActive(true);
+            Debug.Log("Hole is fixed — skipping trap cutscene.");
+            return;
         }
+
+        //  Otherwise, play the cutscene normally
+        player.GetComponent<PlayerController>().enabled = false;
+        Debug.Log("Player entered trap trigger");
+        hole.SetActive(true);
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        cloneCharacter = Instantiate(characterObject, characterObject.transform.position, characterObject.transform.rotation);
+        parentTemporaryFallInTrap.SetActive(true);
+        parentTemporaryFallInTrap.transform.position = characterObject.transform.position;
+        cloneCharacter.transform.SetParent(parentTemporaryFallInTrap.transform);
+        cloneCharacter.transform.localPosition = Vector3.zero;
+        parentTemporaryFallInTrap.GetComponent<Animator>().Play("FallInTrap");
+        cam.GetComponent<CameraFollow>().enabled = false;
+        movePlayer();
+        step = 1;
+        characterObject.SetActive(false);
+        skipSceneObject.SetActive(true);
     }
+
 
     public void startFallSequence() 
     {

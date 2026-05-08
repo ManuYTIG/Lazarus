@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e077458d81cd0419ad6668f73bac19, type: 3}
+  m_Name: PlankItem
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  ID: plank
+  Name: Plank
+  Description: ???
+  Icon: {fileID: 3257921421393938180, guid: ab37ae0401d263b40a5127abdbc2cd28, type: 3}
+  Prefab: {fileID: 3424729290536219913, guid: 82d36523575f0c4449f5885fa0a3c248, type: 3}
+  AdditionalPrefab: {fileID: 0}
