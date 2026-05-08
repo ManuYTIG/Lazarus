@@ -57,6 +57,9 @@ TagManager:
   - name: Floor 2
     uniqueID: 2457074015
     locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
   - name: Secondary Inside Walls
     uniqueID: 3838086845
     locked: 0
@@ -65,9 +68,6 @@ TagManager:
     locked: 0
   - name: Inside Walls
     uniqueID: 1562774131
-    locked: 0
-  - name: Default
-    uniqueID: 0
     locked: 0
   - name: SideWalls
     uniqueID: 2200620881
