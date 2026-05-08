@@ -35,30 +35,25 @@ public class PlayerRespawn : MonoBehaviour
     }
 
     public void Die()
+{
+    if (deathParticlesPrefab != null)
     {
-        // Play sound
-        if (audioSource != null && gameOverSound != null)
-            audioSource.PlayOneShot(gameOverSound); // <-- added
-
-        if (deathParticlesPrefab != null)
-        {
-            GameObject particles = Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);
-            Destroy(particles, 2f);
-        }
-
-        if (playerController != null) playerController.enabled = false;
-        if (rb != null) rb.simulated = false;
-        if (boxCollider != null) boxCollider.enabled = false;
-        if (animator != null) animator.enabled = false;
-        if (timerSystem != null)
-        {
-            timerSystem.Pause();
-            timerSystem.enabled = false;
-        }
-        foreach (SpriteRenderer sr in spriteRenderers)
-            sr.enabled = false;
-        Invoke("Respawn", 1.5f);
+        GameObject particles = Instantiate(deathParticlesPrefab, transform.position, Quaternion.identity);
+        Destroy(particles, 2f);
     }
+    if (playerController != null) playerController.enabled = false;
+    if (rb != null) rb.simulated = false;
+    if (boxCollider != null) boxCollider.enabled = false;
+    if (animator != null) animator.enabled = false;
+    if (timerSystem != null)
+    {
+        timerSystem.Pause();
+        timerSystem.enabled = false;
+    }
+    foreach (SpriteRenderer sr in spriteRenderers)
+        sr.enabled = false;
+    Invoke("Respawn", 1.5f);
+}
 
 
     public void Respawn()
