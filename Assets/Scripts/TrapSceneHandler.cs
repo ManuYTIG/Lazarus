@@ -4,7 +4,6 @@ public class TrapSceneHandler : MonoBehaviour
 {
     public ManageEndFalling endFallingManager;
     public GameObject canvasFalling;
-    public Sprite spriteShadow;
     public GameObject player;
     public GameObject characterObject;
     public GameObject parentTemporaryFallInTrap;
@@ -13,12 +12,13 @@ public class TrapSceneHandler : MonoBehaviour
     public GameManager manager;
     public TimerSystem timerSystem;
     public GameObject shadow;
+    public GameObject newShadow;
     public AudioSource source;
     public GameObject hole;
     public AudioClip soundWind;
     public AudioClip soundFall;
     public GameObject skipSceneObject;
-    private Sprite prevShadow;
+    private GameObject tempShadow;
     private float timer = 0f;
     private GameObject cloneCharacter;
     private int step = 0;
@@ -27,20 +27,20 @@ public class TrapSceneHandler : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        prevShadow = shadow.GetComponent<SpriteRenderer>().sprite;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(manager.skippedScene)
+        if(manager.skippedScene && step != 0)
         {
             manager.skippedScene = false;
             canvasFalling.SetActive(false);
             characterObject.SetActive(true);
             timer = 0f;
+            source.Stop();
+            if (step < 4) endFallingManager.stopEndFallingAnimSkip();
             step = 0;
-            if(step < 4) endFallingManager.stopEndFallingAnimSkip();
             resetPlayer();
         }
 
@@ -60,6 +60,7 @@ public class TrapSceneHandler : MonoBehaviour
             {
                 Debug.Log("finished");
                 step = 0;
+                skipSceneObject.SetActive(false);
                 resetPlayer();
             }
         }
@@ -79,12 +80,14 @@ public class TrapSceneHandler : MonoBehaviour
 
         //  Otherwise, play the cutscene normally
         player.GetComponent<PlayerController>().enabled = false;
+        player.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(0, 0);
         Debug.Log("Player entered trap trigger");
         hole.SetActive(true);
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         cloneCharacter = Instantiate(characterObject, characterObject.transform.position, characterObject.transform.rotation);
         parentTemporaryFallInTrap.SetActive(true);
         parentTemporaryFallInTrap.transform.position = characterObject.transform.position;
+        parentTemporaryFallInTrap.transform.localPosition = (parentTemporaryFallInTrap.transform.localPosition + hole.transform.localPosition)/2;
         cloneCharacter.transform.SetParent(parentTemporaryFallInTrap.transform);
         cloneCharacter.transform.localPosition = Vector3.zero;
         parentTemporaryFallInTrap.GetComponent<Animator>().Play("FallInTrap");
@@ -98,15 +101,19 @@ public class TrapSceneHandler : MonoBehaviour
 
     public void startFallSequence() 
     {
-        Debug.Log("step 2");
-        step = 2;
-        cam.transform.position = new Vector3(playerSpawn.x, playerSpawn.y, cam.transform.position.z);
-        canvasFalling.SetActive(true);
-        source.clip = soundWind;
-        source.Play();
-        shadow.GetComponent<SpriteRenderer>().sprite = spriteShadow;
-        timer = 5f;
-        
+        if(!manager.skippedScene)
+        {
+            Debug.Log("step 2");
+            step = 2;
+            cam.transform.position = new Vector3(playerSpawn.x, playerSpawn.y, cam.transform.position.z);
+            canvasFalling.SetActive(true);
+            source.clip = soundWind;
+            source.Play();
+            tempShadow = Instantiate(newShadow, shadow.transform.position, shadow.transform.rotation);
+            tempShadow.SetActive(true);
+            tempShadow.transform.SetParent(player.transform);
+            timer = 5f;
+        }
     }
 
     void movePlayer()
@@ -117,25 +124,27 @@ public class TrapSceneHandler : MonoBehaviour
 
     public void EndFallPlayer()
     {
-        shadow.GetComponent<SpriteRenderer>().sprite = prevShadow;
-        step = 4;
-        timer = 3f;
-        source.Stop();
-        source.clip = soundFall;
-        source.PlayOneShot(soundFall);
-        Debug.Log("step 4");
-        characterObject.SetActive(true);
-        characterObject.GetComponent<Animator>().Play("fallen_player");
+        if (!manager.skippedScene)
+        {
+            step = 4;
+            timer = 3f;
+            source.Stop();
+            source.clip = soundFall;
+            source.PlayOneShot(soundFall);
+            Debug.Log("step 4");
+            characterObject.SetActive(true);
+            characterObject.GetComponent<Animator>().Play("fallen_player");
+        }
     }
 
     public void resetPlayer()
     {
         player.GetComponent<Health>().RemoveHealth(player.GetComponent<Health>().health - 10);
+        Destroy(tempShadow);
         characterObject.GetComponent<Animator>().Play("character_front");
         player.GetComponent<PlayerController>().enabled = true;
-        shadow.GetComponent<SpriteRenderer>().sprite = prevShadow;
+        shadow.SetActive(true);
         cam.GetComponent<CameraFollow>().enabled = true;
         timerSystem.StartTimer(); 
-        skipSceneObject.SetActive(false);
     }
 }

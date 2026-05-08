@@ -45,16 +45,17 @@ public class GameManager : MonoBehaviour
 
     public void SkipScene()
     {
+        Debug.Log("Skipped scene");
         skippedScene = true;
         if (currentSceneIndex == 0)
         {
             Debug.Log("Skipping first scene");
             dyingCharacterSceneHandler.StopScene();
             skippedScene = false;
+            StartGamePlay();
         }
-
         skipSceneObject.SetActive(false);
-        StartGamePlay();
+        
     }
 
     public void startGame()

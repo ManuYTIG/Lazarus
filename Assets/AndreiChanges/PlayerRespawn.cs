@@ -8,6 +8,7 @@ public class PlayerRespawn : MonoBehaviour
     public AudioClip gameOverSound; // <-- added
     public Image TimerRunOutImg;
     public GameObject GameUI;
+    public GameObject character;
     public GameObject manager;
 
     private GameManager gameManager;
@@ -63,6 +64,7 @@ public class PlayerRespawn : MonoBehaviour
     public void Respawn()
     {
         Debug.Log("Respawning player...");
+
         TimerRunOutImg.color = new Color(TimerRunOutImg.color.r, TimerRunOutImg.color.g, TimerRunOutImg.color.b, 0f);
         transform.position = spawnPoint;
         if (playerController != null) playerController.enabled = true;
@@ -70,8 +72,10 @@ public class PlayerRespawn : MonoBehaviour
         if (boxCollider != null) boxCollider.enabled = true;
         if (animator != null)
         {
+            Debug.Log("play spawn anim");
             animator.enabled = true;
             animator.Play("Spawn", 0, 0f);
+            character.GetComponent<Animator>().Play("character_front_layerAbove", 0, 0f);
         }
         if (health != null) health.ResetHealth();
         foreach (SpriteRenderer sr in spriteRenderers)
