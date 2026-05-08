@@ -54,4 +54,7 @@ public class CameraFollow : MonoBehaviour
         shakeDuration = 0f;
         shakeMagnitude = 0f;
     }
+    public void SetTarget(Transform transform) {
+        target = transform;
+    }
 }

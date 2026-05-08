@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
@@ -6,6 +7,9 @@ public class RepairMachine : MonoBehaviour
 {
     [Header("Repair Settings")]
     public int hpBonusPerRepair = 2;
+    public OpenDoorScript door;
+    public Transform doorPosition;
+    public CameraFollow camera;
 
     [Header("Machine Sprites")]
     public Sprite state0;
@@ -131,8 +135,27 @@ public class RepairMachine : MonoBehaviour
         if (smallLight != null) smallLight.enabled = true;
         CameraFollow.instance?.TriggerShake(0.4f, 0.2f);
         MemoryManager.instance?.OnRepair(1);
-        Debug.Log("[Machine] Core installé — Réparation 1");
+        Debug.Log("[Machine] Core installï¿½ ï¿½ Rï¿½paration 1");
+        StartCoroutine(OpenDoors());
     }
+
+    public IEnumerator OpenDoors()
+{
+    // 1. Detach camera from player and pan to door
+    camera.SetTarget(doorPosition);
+
+    // 2. Wait for the pan to arrive (tweak to match your pan speed)
+    yield return new WaitForSeconds(1.5f);
+
+    // 3. Open the door
+    door.OpenDoor();
+
+    // 4. Hold on the door for a moment
+    yield return new WaitForSeconds(3f);
+
+    // 5. Return camera to player
+    camera.SetTarget(player.transform);
+}
 
     private void InstallStick(ItemData item)
     {
@@ -144,7 +167,7 @@ public class RepairMachine : MonoBehaviour
         if (stickRLight != null) stickRLight.enabled = true;
         CameraFollow.instance?.TriggerShake(0.4f, 0.2f);
         MemoryManager.instance?.OnRepair(2);
-        Debug.Log("[Machine] Barre installée — Réparation 2");
+        Debug.Log("[Machine] Barre installï¿½e ï¿½ Rï¿½paration 2");
     }
 
     private void ActivateFinal()
@@ -162,7 +185,7 @@ public class RepairMachine : MonoBehaviour
         smallLight.color = finalColor;
         CameraFollow.instance?.TriggerShake(0.6f, 0.3f);
         MemoryManager.instance?.OnRepair(3);
-        Debug.Log("[Machine] Électricité rétablie — Machine complète");
+        Debug.Log("[Machine] ï¿½lectricitï¿½ rï¿½tablie ï¿½ Machine complï¿½te");
     }
 
     public void TriggerFinalRepair()
