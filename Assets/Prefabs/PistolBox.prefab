@@ -187,7 +187,7 @@ MonoBehaviour:
   - {fileID: 7402362418494054631, guid: d50dde2597ac8444b88408b06b89dd16, type: 3}
   - {fileID: -2357185719607058058, guid: f988d03fadd2cae4697b366db3c942c7, type: 3}
   particleLife: 1
-  recoilForce: 10
+  recoilForce: 20
   wobbleScale: 0.9
   wobbleTime: 0.1
   damageCooldown: 0.2

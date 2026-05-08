@@ -757,10 +757,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RepairMachine
   hpBonusPerRepair: 25
+  door: {fileID: 0}
+  doorPosition: {fileID: 0}
+  camera: {fileID: 0}
   state0: {fileID: -6719120941544151899, guid: 3d4d4219b8c1ae94084f03c99f694e7e, type: 3}
   state1: {fileID: 4487885175145307170, guid: f122f6accdc6b3a40a8ecc63090b0984, type: 3}
   state2: {fileID: -3789191553978254459, guid: 1e7b48ffda59f9943b4b0751fc8b871a, type: 3}
-  state3: {fileID: 3137895668989465391, guid: 2015e78e177984d4d96b376ba8e4022c, type: 3}
+  state3: {fileID: -7400144346388665230, guid: c8867529da1a5e74cb7d0a89800f0980, type: 3}
   keyPrefab: {fileID: 8847680725329592777, guid: d8f5a69ce654cd344bfaddc93bde2ea7, type: 3}
   buttonTexture: {fileID: 2800000, guid: 05986375c19410e43ad941ad55611375, type: 3}
   installSound: {fileID: 8300000, guid: 9175d12a5334d86468c9c8e984efde6f, type: 3}
