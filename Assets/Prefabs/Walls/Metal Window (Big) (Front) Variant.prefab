@@ -122,11 +122,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2002492858535346064, guid: 61a5948895938b14ea789bb6140c0701, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 2002492858535346064, guid: 61a5948895938b14ea789bb6140c0701, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -9.5
       objectReference: {fileID: 0}
     - target: {fileID: 2002492858535346064, guid: 61a5948895938b14ea789bb6140c0701, type: 3}
       propertyPath: m_LocalPosition.z
@@ -214,6 +214,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2039957977530020930, guid: 61a5948895938b14ea789bb6140c0701, type: 3}
       insertIndex: -1
       addedObject: {fileID: 218399041357394216}
+    - targetCorrespondingSourceObject: {fileID: 2039957977530020930, guid: 61a5948895938b14ea789bb6140c0701, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5348235901124120036}
   m_SourcePrefab: {fileID: 100100000, guid: 61a5948895938b14ea789bb6140c0701, type: 3}
 --- !u!1 &2388529685586223356 stripped
 GameObject:
@@ -236,6 +239,57 @@ MonoBehaviour:
   fadedAlpha: 0.3
   normalAlpha: 1
   fadeSpeed: 5
+--- !u!60 &5348235901124120036
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2388529685586223356}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1, y: -0.9583334}
+      - {x: -1, y: -0.9583334}
+      - {x: -1, y: -1}
+      - {x: 1, y: -1}
+  m_UseDelaunayMesh: 0
 --- !u!4 &2783481055799175982 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2002492858535346064, guid: 61a5948895938b14ea789bb6140c0701, type: 3}
