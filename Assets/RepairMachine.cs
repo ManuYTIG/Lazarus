@@ -41,14 +41,14 @@ public class RepairMachine : MonoBehaviour
 
     private bool coreInstalled = false;
     private bool stickInstalled = false;
-    private bool thirdInstalled = true;
+    private bool thirdInstalled = false;
 
     void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
-    audioSource.spatialBlend = 0f;
+        audioSource.spatialBlend = 0f;
         sr = GetComponent<SpriteRenderer>();
-        if(state0 != null) sr.sprite = state0;
+        if (state0 != null) sr.sprite = state0;
         smallLight.enabled = false;
         smallLight.color = initialColor;
         stickLLight.enabled = true;
@@ -61,6 +61,7 @@ public class RepairMachine : MonoBehaviour
         screenLight.color = initialColor;
         fullLight.enabled = false;
         fullLight.color = initialColor;
+
         Sprite s = Sprite.Create(
             buttonTexture,
             new Rect(0, 0, buttonTexture.width, buttonTexture.height),
@@ -85,12 +86,6 @@ public class RepairMachine : MonoBehaviour
         }
     }
 
-   private void PlaySound(AudioClip clip)
-    {
-    if (clip != null && audioSource != null)
-        audioSource.PlayOneShot(clip, 0.5f); // change 0.5f pour ajuster
-    
-    }
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -154,7 +149,7 @@ public class RepairMachine : MonoBehaviour
 
     private void ActivateFinal()
     {
-        PlaySound(installSound);
+        PlaySound(finalActivationSound);
         thirdInstalled = true;
         ApplyHPBonus();
         if (state3 != null) sr.sprite = state3;
@@ -165,10 +160,30 @@ public class RepairMachine : MonoBehaviour
         stickRLight.color = finalColor;
         coreLight.color = finalColor;
         smallLight.color = finalColor;
-
         CameraFollow.instance?.TriggerShake(0.6f, 0.3f);
         MemoryManager.instance?.OnRepair(3);
         Debug.Log("[Machine] Électricité rétablie — Machine complète");
+    }
+
+    public void TriggerFinalRepair()
+    {
+        if (thirdInstalled) return;
+        thirdInstalled = true;
+        if (state3 != null) sr.sprite = state3;
+        fullLight.enabled = true;
+        fullLight.color = new Color(1f, 0.8f, 0.6f);
+        screenLight.color = finalColor;
+        stickLLight.color = finalColor;
+        stickRLight.color = finalColor;
+        coreLight.color = finalColor;
+        smallLight.color = finalColor;
+        PlaySound(finalActivationSound);
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (clip != null && audioSource != null)
+            audioSource.PlayOneShot(clip, 0.5f);
     }
 
     private void ApplyHPBonus()
