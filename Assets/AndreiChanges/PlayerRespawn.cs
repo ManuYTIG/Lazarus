@@ -70,7 +70,6 @@ public class PlayerRespawn : MonoBehaviour
             Debug.Log("play spawn anim");
             animator.enabled = true;
             animator.Play("Spawn", 0, 0f);
-            character.GetComponent<Animator>().Play("character_front_layerAbove", 0, 0f);
         }
         if (health != null) health.ResetHealth();
         foreach (SpriteRenderer sr in spriteRenderers)
