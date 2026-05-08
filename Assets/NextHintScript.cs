@@ -9,21 +9,18 @@ public class NextHintScript : MonoBehaviour
     private int hint = 0;
 
     public void nextHint() {
+        Debug.Log($"Hint {hint}");
         if(hint == 0) {
             hint1.SetActive(true);
             hint2.SetActive(false);
             hint3.SetActive(false);
             hint++;
-        }
-
-        if(hint == 1) {
+        } else if(hint == 1) {
             hint1.SetActive(false);
             hint2.SetActive(true);
             hint3.SetActive(false);
             hint++;
-        }
-
-        if(hint == 2) {
+        } else if(hint == 2) {
             hint1.SetActive(false);
             hint2.SetActive(false);
             hint3.SetActive(true);
